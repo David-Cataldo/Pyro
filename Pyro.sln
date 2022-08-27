@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{FF04C8F2-450C-4E1A-8813-CAD77E8AA3D9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pyro", "Pyro\Pyro.vcxproj", "{2A21C00F-56A1-4BB9-81C9-3BAE94C41A13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A21C00F-56A1-4BB9-81C9-3BAE94C41A13}.Debug|x64.ActiveCfg = Debug|x64
+		{2A21C00F-56A1-4BB9-81C9-3BAE94C41A13}.Debug|x64.Build.0 = Debug|x64
+		{2A21C00F-56A1-4BB9-81C9-3BAE94C41A13}.Debug|x86.ActiveCfg = Debug|x64
+		{2A21C00F-56A1-4BB9-81C9-3BAE94C41A13}.Release|x64.ActiveCfg = Release|x64
+		{2A21C00F-56A1-4BB9-81C9-3BAE94C41A13}.Release|x64.Build.0 = Release|x64
+		{2A21C00F-56A1-4BB9-81C9-3BAE94C41A13}.Release|x86.ActiveCfg = Release|x64
+		{FF04C8F2-450C-4E1A-8813-CAD77E8AA3D9}.Debug|x64.ActiveCfg = Debug|x64
+		{FF04C8F2-450C-4E1A-8813-CAD77E8AA3D9}.Debug|x64.Build.0 = Debug|x64
+		{FF04C8F2-450C-4E1A-8813-CAD77E8AA3D9}.Debug|x86.ActiveCfg = Debug|x64
+		{FF04C8F2-450C-4E1A-8813-CAD77E8AA3D9}.Release|x64.ActiveCfg = Release|x64
+		{FF04C8F2-450C-4E1A-8813-CAD77E8AA3D9}.Release|x64.Build.0 = Release|x64
+		{FF04C8F2-450C-4E1A-8813-CAD77E8AA3D9}.Release|x86.ActiveCfg = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1E81530-21FF-4BF6-972F-0F656EF98677}
+	EndGlobalSection
+EndGlobal
