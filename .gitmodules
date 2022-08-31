@@ -1,0 +1,9 @@
+[submodule "Pyro/vendor/spdlog"]
+	path = Pyro/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "Pyro/vendor/GLFW"]
+	path = Pyro/vendor/GLFW
+	url = https://github.com/TheCherno/glfw
+[submodule "Pyro/vendor/imgui"]
+	path = Pyro/vendor/imgui
+	url = https://github.com/ocornut/imgui
