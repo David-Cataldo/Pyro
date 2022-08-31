@@ -20,6 +20,8 @@ include "Pyro/vendor/GLFW"
 include "Pyro/vendor/Glad"
 include "Pyro/vendor/imgui"
 
+starterproj "Sandbox"
+
 project "Pyro"
 	location "Pyro"
 	kind "SharedLib"
