@@ -2,6 +2,13 @@
 
 #include "Core.h"
 
+#include "Window.h"
+#include "Pyro/LayerStack.h"
+#include "Events/Event.h"
+#include "Pyro/Events/ApplicationEvent.h"
+
+
+
 namespace Pyro
 {
 	class PYRO_API Application
@@ -11,9 +18,25 @@ namespace Pyro
 		virtual ~Application();
 
 		void Run();
+
+		void OnEvent(Event& e);
+
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
+
+		inline static Application& Get() { return *s_Instance; }
+		inline Window& GetWindow() { return *m_Window; }
+	private:
+		bool OnWindowClose(WindowCloseEvent& e);
+
+		std::unique_ptr<Window> m_Window;
+		bool m_Running = true;
+		LayerStack m_LayerStack;
+	private:
+		static Application* s_Instance;
 	};
 
-	// To be defined in client
+	// To be defined in CLIENT
 	Application* CreateApplication();
 }
 
