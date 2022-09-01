@@ -17,15 +17,18 @@ IncludeDir["GLFW"] = "Pyro/vendor/GLFW/include"
 IncludeDir["Glad"] = "Pyro/vendor/Glad/include"
 IncludeDir["ImGui"] = "Pyro/vendor/imgui"
 
-include "Pyro/vendor/GLFW"
-include "Pyro/vendor/Glad"
-include "Pyro/vendor/imgui"
+group "Dependencies"
+	include "Pyro/vendor/GLFW"
+	include "Pyro/vendor/Glad"
+	include "Pyro/vendor/imgui"
 
+ group ""
 
 project "Pyro"
 	location "Pyro"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "Off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -58,7 +61,6 @@ project "Pyro"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -70,22 +72,22 @@ project "Pyro"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
 		defines "PY_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "PY_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "PY_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 
@@ -93,6 +95,7 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "Off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -116,7 +119,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -126,15 +128,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "PY_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "PY_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "PY_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
