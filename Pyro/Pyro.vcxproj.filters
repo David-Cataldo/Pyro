@@ -65,6 +65,12 @@
       <Filter>Pyro</Filter>
     </ClInclude>
     <ClInclude Include="src\pypch.h" />
+    <ClInclude Include="src\Pyro\Input.h">
+      <Filter>Pyro</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Pyro\KeyCodes.h" />
+    <ClInclude Include="src\Pyro\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
@@ -89,5 +95,6 @@
       <Filter>Pyro</Filter>
     </ClCompile>
     <ClCompile Include="src\pypch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

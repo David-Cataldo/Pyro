@@ -16,7 +16,11 @@ public:
 
 	void OnEvent(Pyro::Event& evnt) override
 	{
-		//PY_TRACE("{0}", evnt);
+		if (evnt.GetEventType() == Pyro::EventType::KeyPressed)
+		{
+			Pyro::KeyPressedEvent& e = (Pyro::KeyPressedEvent&)evnt;
+			PY_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 

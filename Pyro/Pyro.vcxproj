@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Pyro.h" />
     <ClInclude Include="src\Pyro\Application.h" />
@@ -160,14 +161,18 @@
     <ClInclude Include="src\Pyro\Events\KeyEvent.h" />
     <ClInclude Include="src\Pyro\Events\MouseEvent.h" />
     <ClInclude Include="src\Pyro\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Pyro\Input.h" />
+    <ClInclude Include="src\Pyro\KeyCodes.h" />
     <ClInclude Include="src\Pyro\Layer.h" />
     <ClInclude Include="src\Pyro\LayerStack.h" />
     <ClInclude Include="src\Pyro\Log.h" />
+    <ClInclude Include="src\Pyro\MouseButtonCodes.h" />
     <ClInclude Include="src\Pyro\Window.h" />
     <ClInclude Include="src\pypch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Pyro\Application.cpp" />
     <ClCompile Include="src\Pyro\ImGui\ImGuiLayer.cpp" />
