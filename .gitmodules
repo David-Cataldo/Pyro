@@ -7,3 +7,6 @@
 [submodule "Pyro/vendor/imgui"]
 	path = Pyro/vendor/imgui
 	url = https://github.com/ocornut/imgui
+[submodule "Pyro/vendor/glm"]
+	path = Pyro/vendor/glm
+	url = https://github.com/g-truc/glm

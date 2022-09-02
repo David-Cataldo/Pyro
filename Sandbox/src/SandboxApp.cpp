@@ -1,5 +1,4 @@
 #include <Pyro.h>
-#include <iostream>
 
 class ExampleLayer : public Pyro::Layer
 {
