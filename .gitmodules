@@ -4,9 +4,9 @@
 [submodule "Pyro/vendor/GLFW"]
 	path = Pyro/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+[submodule "Pyro/vendor/imgui"]
+	path = Pyro/vendor/imgui
+	url = https://github.com/ocornut/imgui
 [submodule "Pyro/vendor/glm"]
 	path = Pyro/vendor/glm
 	url = https://github.com/g-truc/glm
-[submodule "Pyro/vendor/imgui"]
-	path = Pyro/vendor/imgui
-	url = https://github.com/ocornut/imgui.git
