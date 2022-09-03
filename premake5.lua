@@ -114,7 +114,6 @@ project "Sandbox"
 	{
 		"Pyro/vendor/spdlog/include",
 		"Pyro/src",
-		"Pyro/vendor",
 		"%{IncludeDir.glm}"
 	}
 

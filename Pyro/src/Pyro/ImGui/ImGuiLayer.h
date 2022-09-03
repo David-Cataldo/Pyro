@@ -17,10 +17,7 @@ namespace Pyro
 		
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
-		virtual void OnImGuiRender() override;
-
-		void Begin();
-		void End();
+		virtual void OnUpdate() override;
 	private:
 		float m_Time = 0.0f;
 	};
