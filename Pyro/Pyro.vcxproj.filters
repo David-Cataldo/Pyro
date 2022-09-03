@@ -1373,5 +1373,6 @@
     <ClCompile Include="src\pypch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Pyro\ImGui\ImGuiBuild.cpp" />
   </ItemGroup>
 </Project>

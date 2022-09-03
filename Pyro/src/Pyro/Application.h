@@ -7,7 +7,7 @@
 #include "Events/Event.h"
 #include "Pyro/Events/ApplicationEvent.h"
 
-
+#include "Pyro/ImGui/ImGuiLayer.h"
 
 namespace Pyro
 {
@@ -30,6 +30,7 @@ namespace Pyro
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:
