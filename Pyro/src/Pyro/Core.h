@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef PY_PLATFORM_WINDOWS
+#if PY_DYNAMIC_LINK
 	#ifdef PY_BUILD_DLL
 		#define PYRO_API __declspec(dllexport)
 	#else
 		#define PYRO_API __declspec(dllimport)
 	#endif
+#else
+	#define PYRO_API
+#endif
 #else
 	#error Pyro only supports Windows!
 #endif
