@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Pyro/Window.h"
+#include "Pyro/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -28,6 +29,7 @@ namespace Pyro
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
