@@ -18,6 +18,12 @@ namespace Pyro
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		PY_CORE_ASSERT(status, "Failed to initialize Glad!");
+
+		PY_CORE_INFO("OpenGL Info:");
+		PY_CORE_INFO("  Vendor: {0}", glGetString(GL_VENDOR));
+		PY_CORE_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
+		PY_CORE_INFO("  Version: {0}", glGetString(GL_VERSION));
+
 	}
 
 	void OpenGLContext::SwapBuffers()
