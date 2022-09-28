@@ -105,6 +105,9 @@
     <ClInclude Include="src\Pyro\Renderer\GraphicsContext.h">
       <Filter>src\Pyro\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Shader.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Pyro\Window.h">
       <Filter>src\Pyro</Filter>
     </ClInclude>
@@ -1356,7 +1359,10 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Pyro\Renderer\Shader.h" />
+    <ClInclude Include="src\Pyro\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Pyro\Renderer\Renderer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
@@ -1386,9 +1392,15 @@
     <ClCompile Include="src\Pyro\Log.cpp">
       <Filter>src\Pyro</Filter>
     </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\Shader.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\pypch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Pyro\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
   </ItemGroup>
 </Project>
