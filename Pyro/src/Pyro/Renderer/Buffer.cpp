@@ -7,6 +7,8 @@
 
 namespace Pyro
 {
+	// Vertex BUFFER ////////////////////////////////////////////////////////////
+
 	VertexBuffer* VertexBuffer::Create(float* vertices, uint32_t size)
 	{
 		switch (Renderer::GetAPI())
@@ -18,6 +20,8 @@ namespace Pyro
 		PY_CORE_ASSERT(false, "Unknown RendererAPI");
 		return nullptr;
 	}
+
+	// INDEX BUFFER ////////////////////////////////////////////////////////////
 
 	IndexBuffer* IndexBuffer::Create(uint32_t* indices, uint32_t size)
 	{

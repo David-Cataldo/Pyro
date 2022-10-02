@@ -4,6 +4,8 @@
 
 namespace Pyro
 {
+	// Vertex BUFFER ////////////////////////////////////////////////////////////
+
 	class OpenGLVertexBuffer : public VertexBuffer
 	{
 	public:
@@ -12,9 +14,16 @@ namespace Pyro
 
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
+
+		virtual void SetLayout(const BufferLayout& layout) override { m_Layout = layout; }
+		virtual const BufferLayout& GetLayout() const override { return m_Layout; }
+
 	private:
 		uint32_t m_RendererID;
+		BufferLayout m_Layout;
 	};
+
+	// INDEX BUFFER ////////////////////////////////////////////////////////////
 
 	class OpenGLIndexBuffer : public IndexBuffer
 	{
@@ -26,6 +35,7 @@ namespace Pyro
 		virtual void Unbind() const override;
 
 		virtual uint32_t GetCount() const override { return m_Count; }
+
 	private:
 		uint32_t m_RendererID;
 		uint32_t m_Count;
