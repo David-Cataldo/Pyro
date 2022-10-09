@@ -9,15 +9,9 @@
 
 #include "ImGui/ImGuiLayer.h"
 
-#include "Pyro/Renderer/Shader.h"
-#include "Pyro/Renderer/Buffer.h"
-#include "Pyro/Renderer/VertexArray.h"
-
-#include "Renderer/OrthographicCamera.h"
-
 namespace Pyro
 {
-	class PYRO_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -40,13 +34,6 @@ namespace Pyro
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_Shader2;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};

@@ -7,6 +7,7 @@ namespace Pyro
 	class OrthographicCamera : public Camera
 	{
 	public:
+		OrthographicCamera() {}
 		OrthographicCamera(float left, float right, float bottom, float top);
 
 		virtual const glm::vec3& GetPosition() const override { return m_Position; } 

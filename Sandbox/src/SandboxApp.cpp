@@ -4,23 +4,194 @@ class ExampleLayer : public Pyro::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example")
+		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
 	{
+		m_VertexArray.reset(Pyro::VertexArray::Create());
+
+		float vertices[3 * 7] = {
+			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
+			 0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f,
+			 0.0f,	0.5f, 0.0f, 0.8f, 0.8f, 0.3f, 1.0f
+		};
+
+		std::shared_ptr<Pyro::VertexBuffer> m_VertexBuffer;
+		m_VertexBuffer.reset(Pyro::VertexBuffer::Create(vertices, sizeof(vertices)));
+
+		Pyro::BufferLayout layout = {
+			{ Pyro::ShaderDataType::Float3, "a_Position"},
+			{ Pyro::ShaderDataType::Float4, "a_Color"}
+		};
+
+		m_VertexBuffer->SetLayout(layout);
+		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
+
+
+		uint32_t indices[3] = {
+			0, 1, 2
+		};
+
+		std::shared_ptr<Pyro::IndexBuffer> m_IndexBuffer;
+		m_IndexBuffer.reset(Pyro::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+
+		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
+
+
+
+		m_SquareVA.reset(Pyro::VertexArray::Create());
+
+		float vertices2[4 * 3] = {
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.5f,	0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f
+		};
+
+		std::shared_ptr<Pyro::VertexBuffer> squareVB;
+		squareVB.reset(Pyro::VertexBuffer::Create(vertices2, sizeof(vertices2)));
+
+
+		squareVB->SetLayout({
+				{ Pyro::ShaderDataType::Float3, "a_Position"}
+			});
+		m_SquareVA->AddVertexBuffer(squareVB);
+
+		uint32_t indices2[3 * 2] = {
+			0, 1, 2,
+			2, 3, 0
+		};
+
+		std::shared_ptr<Pyro::IndexBuffer> squareIB;
+		squareIB.reset(Pyro::IndexBuffer::Create(indices2, sizeof(indices2)));
+
+		m_SquareVA->SetIndexBuffer(squareIB);
+
+		std::string vertexSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec4 a_Color;
+
+			uniform mat4 u_ViewProjection;
+
+			out vec3 v_Position;
+			out vec4 v_Color;
+
+			void main()
+			{
+				v_Position = a_Position;
+				v_Color = a_Color;
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+			}
+
+		)";
+
+		std::string fragmentSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color;
+
+			in vec3 v_Position;
+			in vec4 v_Color;
+
+			void main()
+			{
+				color = v_Color;
+			}
+
+		)";
+
+		m_Shader.reset(Pyro::Shader::Create(vertexSrc, fragmentSrc));
+
+		std::string vertexSrc2 = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec4 a_Color;
+
+			uniform mat4 u_ViewProjection;
+
+			out vec3 v_Position;
+
+			void main()
+			{
+				v_Position = a_Position;
+			    gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+
+			}
+
+		)";
+
+		std::string fragmentSrc2 = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color;
+
+			in vec3 v_Position;
+
+			void main()
+			{
+				color = vec4(0.0, 0.0, 1.0, 1.0);
+			}
+
+		)";
+
+		m_Shader2.reset(Pyro::Shader::Create(vertexSrc2, fragmentSrc2));
 	}
 
 	void OnUpdate() override
 	{
-		//PY_INFO("ExampleLayer::Update");
+		if(Pyro::Input::IsKeyPressed(PY_KEY_LEFT))
+			m_CameraPosition.x -= m_CameraMoveSpeed;
+
+		else if (Pyro::Input::IsKeyPressed(PY_KEY_RIGHT))
+			m_CameraPosition.x += m_CameraMoveSpeed;
+
+		else if (Pyro::Input::IsKeyPressed(PY_KEY_UP))
+			m_CameraPosition.y += m_CameraMoveSpeed;
+
+		if (Pyro::Input::IsKeyPressed(PY_KEY_DOWN))
+			m_CameraPosition.y -= m_CameraMoveSpeed;
+
+		if (Pyro::Input::IsKeyPressed(PY_KEY_A))
+			m_CameraRotation += m_CameraRotationSpeed;
+
+		else if (Pyro::Input::IsKeyPressed(PY_KEY_D))
+			m_CameraRotation -= m_CameraRotationSpeed;
+
+		Pyro::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+		Pyro::RenderCommand::Clear();
+
+		m_Camera.SetPosition(m_CameraPosition);
+		m_Camera.SetRotation(m_CameraRotation);
+
+
+		Pyro::Renderer::BeginScene(m_Camera);
+
+		Pyro::Renderer::Submit(m_SquareVA, m_Shader2);
+		Pyro::Renderer::Submit(m_VertexArray, m_Shader);
+
+		Pyro::Renderer::EndScene();
 	}
 
 	void OnEvent(Pyro::Event& evnt) override
 	{
-		if (evnt.GetEventType() == Pyro::EventType::KeyPressed)
-		{
-			Pyro::KeyPressedEvent& e = (Pyro::KeyPressedEvent&)evnt;
-			PY_TRACE("{0}", (char)e.GetKeyCode());
-		}
+
 	}
+
+private:
+	std::shared_ptr<Pyro::Shader> m_Shader;
+	std::shared_ptr<Pyro::VertexArray> m_VertexArray;
+
+	std::shared_ptr<Pyro::Shader> m_Shader2;
+	std::shared_ptr<Pyro::VertexArray> m_SquareVA;
+
+	Pyro::OrthographicCamera m_Camera;
+
+	glm::vec3 m_CameraPosition;
+	float m_CameraMoveSpeed = 0.05f;
+
+	float m_CameraRotation = 0.0f;
+	float m_CameraRotationSpeed = 1.5f;
 };
 
 class Sandbox : public Pyro::Application
