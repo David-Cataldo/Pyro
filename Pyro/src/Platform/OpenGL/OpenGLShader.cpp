@@ -3,6 +3,8 @@
 
 #include <glad/glad.h>
 
+#include <glm/gtc/type_ptr.hpp>
+
 namespace Pyro
 {
 	OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
@@ -117,10 +119,23 @@ namespace Pyro
 	void OpenGLShader::Bind() const
 	{
 		glUseProgram(m_RendererID);
+		m_Bound = true;
 	}
 
 	void OpenGLShader::Unbind() const
 	{
 		glUseProgram(0);
+		m_Bound = false;
+	}
+
+	void OpenGLShader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix)
+	{
+		bool unbind = !m_Bound;
+		Bind();
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		PY_ASSERT(location != -1, "Uniform location not found");
+		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
+		if(unbind)
+			Unbind();
 	}
 }
