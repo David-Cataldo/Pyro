@@ -6,6 +6,8 @@
 #include "Pyro/Layer.h"
 #include "Pyro/Log.h"
 
+#include "Pyro/Core/Timestep.h"
+
 #include "Pyro/MouseButtonCodes.h"
 #include "Pyro/KeyCodes.h"
 #include "Pyro/Input.h"

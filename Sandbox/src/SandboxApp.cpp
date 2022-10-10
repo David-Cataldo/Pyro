@@ -1,10 +1,12 @@
 #include <Pyro.h>
 
+#include <glm/gtc/matrix_transform.hpp>
+
 class ExampleLayer : public Pyro::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
+		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_SquarePos(0.0f)
 	{
 		m_VertexArray.reset(Pyro::VertexArray::Create());
 
@@ -72,6 +74,7 @@ public:
 			layout(location = 1) in vec4 a_Color;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 			out vec4 v_Color;
@@ -80,7 +83,7 @@ public:
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 
 		)";
@@ -109,13 +112,14 @@ public:
 			layout(location = 1) in vec4 a_Color;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 
 			void main()
 			{
 				v_Position = a_Position;
-			    gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+			    gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 
 			}
 
@@ -138,25 +142,38 @@ public:
 		m_Shader2.reset(Pyro::Shader::Create(vertexSrc2, fragmentSrc2));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(Pyro::Timestep ts) override
 	{
 		if(Pyro::Input::IsKeyPressed(PY_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed;
-
+			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
 		else if (Pyro::Input::IsKeyPressed(PY_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed;
+			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 
-		else if (Pyro::Input::IsKeyPressed(PY_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed;
+		if (Pyro::Input::IsKeyPressed(PY_KEY_UP))
+			m_CameraPosition.y += m_CameraMoveSpeed * ts;
+		else if (Pyro::Input::IsKeyPressed(PY_KEY_DOWN))
+			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
 
-		if (Pyro::Input::IsKeyPressed(PY_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed;
+
 
 		if (Pyro::Input::IsKeyPressed(PY_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed;
-
+			m_CameraRotation += m_CameraRotationSpeed * ts;
 		else if (Pyro::Input::IsKeyPressed(PY_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed;
+			m_CameraRotation -= m_CameraRotationSpeed * ts;
+
+
+
+		if (Pyro::Input::IsKeyPressed(PY_KEY_J))
+			m_SquarePos.x -= m_SquareMoveSpeed * ts;
+		else if (Pyro::Input::IsKeyPressed(PY_KEY_L))
+			m_SquarePos.x += m_SquareMoveSpeed * ts;
+
+		if (Pyro::Input::IsKeyPressed(PY_KEY_I))
+			m_SquarePos.y += m_SquareMoveSpeed * ts;
+		else if (Pyro::Input::IsKeyPressed(PY_KEY_K))
+			m_SquarePos.y -= m_SquareMoveSpeed * ts;
+
+
 
 		Pyro::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Pyro::RenderCommand::Clear();
@@ -167,7 +184,9 @@ public:
 
 		Pyro::Renderer::BeginScene(m_Camera);
 
-		Pyro::Renderer::Submit(m_SquareVA, m_Shader2);
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_SquarePos);
+
+		Pyro::Renderer::Submit(m_SquareVA, m_Shader2, transform);
 		Pyro::Renderer::Submit(m_VertexArray, m_Shader);
 
 		Pyro::Renderer::EndScene();
@@ -188,10 +207,13 @@ private:
 	Pyro::OrthographicCamera m_Camera;
 
 	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 0.05f;
+	float m_CameraMoveSpeed = 4.0f;
 
 	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 1.5f;
+	float m_CameraRotationSpeed = 45.0f;
+
+	glm::vec3 m_SquarePos;
+	float m_SquareMoveSpeed = 1.0f;
 };
 
 class Sandbox : public Pyro::Application

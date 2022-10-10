@@ -17,6 +17,7 @@ IncludeDir["GLFW"] = "Pyro/vendor/GLFW/include"
 IncludeDir["Glad"] = "Pyro/vendor/Glad/include"
 IncludeDir["ImGui"] = "Pyro/vendor/imgui"
 IncludeDir["glm"] = "Pyro/vendor/glm"
+IncludeDir["entt"] = "Pyro/vendor/entt/include"
 
 group "Dependencies"
 	include "Pyro/vendor/GLFW"
@@ -53,7 +54,8 @@ project "Pyro"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links
@@ -116,7 +118,8 @@ project "Sandbox"
 		"Pyro/vendor/spdlog/include",
 		"Pyro/src",
 		"Pyro/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links

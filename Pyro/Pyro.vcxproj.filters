@@ -16,6 +16,9 @@
     <Filter Include="src\Pyro">
       <UniqueIdentifier>{261F24CF-12EC-7EDA-3B05-6D822731B468}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Pyro\Core">
+      <UniqueIdentifier>{3EABAC91-AA6B-28C8-73A6-7145DF256DA4}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Pyro\Events">
       <UniqueIdentifier>{4A84A6B4-B60F-1479-BF20-976D2B2B7079}</UniqueIdentifier>
     </Filter>
@@ -48,7 +51,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
@@ -65,6 +80,9 @@
     </ClInclude>
     <ClInclude Include="src\Pyro\Core.h">
       <Filter>src\Pyro</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Core\Timestep.h">
+      <Filter>src\Pyro\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Pyro\EntryPoint.h">
       <Filter>src\Pyro</Filter>
@@ -102,10 +120,34 @@
     <ClInclude Include="src\Pyro\MouseButtonCodes.h">
       <Filter>src\Pyro</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Buffer.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Camera.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Pyro\Renderer\GraphicsContext.h">
       <Filter>src\Pyro\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\OrthographicCamera.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\PerspectiveCamera.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\RenderCommand.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Renderer.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\RendererAPI.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Pyro\Renderer\Shader.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\VertexArray.h">
       <Filter>src\Pyro\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Pyro\Window.h">
@@ -1359,21 +1401,24 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Pyro\Renderer\Buffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Pyro\Renderer\Renderer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
-    <ClInclude Include="src\Pyro\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Pyro\Renderer\RendererAPI.h" />
-    <ClInclude Include="src\Pyro\Renderer\RenderCommand.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
-    <ClInclude Include="src\Pyro\Renderer\OrthographicCamera.h" />
-    <ClInclude Include="src\Pyro\Renderer\Camera.h" />
-    <ClInclude Include="src\Pyro\Renderer\PerspectiveCamera.h" />
+    <ClInclude Include="src\Pyro\Scene\Scene.h" />
+    <ClInclude Include="vendor\entt\include\entt.hpp" />
+    <ClInclude Include="src\Pyro\Renderer\Mesh.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -1400,22 +1445,34 @@
     <ClCompile Include="src\Pyro\Log.cpp">
       <Filter>src\Pyro</Filter>
     </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\Buffer.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\PerspectiveCamera.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\RenderCommand.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\Renderer.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\RendererAPI.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Pyro\Renderer\Shader.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\VertexArray.cpp">
       <Filter>src\Pyro\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\pypch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Pyro\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Pyro\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
-    <ClCompile Include="src\Pyro\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\Pyro\Renderer\RendererAPI.cpp" />
-    <ClCompile Include="src\Pyro\Renderer\RenderCommand.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="src\Pyro\Renderer\OrthographicCamera.cpp" />
-    <ClCompile Include="src\Pyro\Renderer\PerspectiveCamera.cpp" />
+    <ClCompile Include="src\Pyro\Scene\Scene.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Mesh.cpp" />
   </ItemGroup>
 </Project>
