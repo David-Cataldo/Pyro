@@ -2,6 +2,8 @@
 
 #include <stack>
 
+#include "Pyro/Core.h"
+
 #include "Camera.h"
 
 namespace Pyro
@@ -15,7 +17,7 @@ namespace Pyro
 		virtual void SetPosition(const glm::vec3& pos) override { m_Position = pos; CalculateViewMatrix(); }
 
 		//float GetRotation() const { return m_Rotation; }
-		//void SetRotation(float rotation) { m_Rotation = rotation; CalculateViewMatrix(); }
+		//void Rotate(float angle, glm::vec3 axis);
 
 		virtual const glm::mat4& GetProjectionMatrix() const override { return m_ProjectionMatrix; }
 		virtual const glm::mat4& GetViewMatrix() const override { return m_ViewMatrix; }
@@ -32,6 +34,7 @@ namespace Pyro
 		glm::vec3 m_Position = glm::vec3(0.0f);
 		//std::stack<glm::quat> rotations;
 
-		//float m_Rotation = 0.0f;
+		
+
 	};
 }

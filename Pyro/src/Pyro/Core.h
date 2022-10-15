@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <glm/glm.hpp>
 
 #ifdef PY_PLATFORM_WINDOWS
 #if PY_DYNAMIC_LINK
@@ -41,3 +42,7 @@ namespace Pyro
 	template<typename T>
 	using Ref = std::shared_ptr<T>;
 }
+
+#define PY_X_AXIS glm::vec3(1.0f, 0.0f, 0.0f)
+#define PY_Y_AXIS glm::vec3(0.0f, 1.0f, 0.0f)
+#define PY_Z_AXIS glm::vec3(0.0f, 0.0f, 1.0f)
