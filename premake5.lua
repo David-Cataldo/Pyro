@@ -18,6 +18,7 @@ IncludeDir["Glad"] = "Pyro/vendor/Glad/include"
 IncludeDir["ImGui"] = "Pyro/vendor/imgui"
 IncludeDir["glm"] = "Pyro/vendor/glm"
 IncludeDir["entt"] = "Pyro/vendor/entt/include"
+IncludeDir["OBJ_loader"] = "Pyro/vendor/OBJ_loader/include"
 
 group "Dependencies"
 	include "Pyro/vendor/GLFW"
@@ -55,7 +56,8 @@ project "Pyro"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.OBJ_loader}"
 	}
 
 	links
@@ -119,7 +121,8 @@ project "Sandbox"
 		"Pyro/src",
 		"Pyro/vendor",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.OBJ_loader}"
 	}
 
 	links

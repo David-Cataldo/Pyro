@@ -28,6 +28,32 @@ namespace Pyro
 		return 0;
 	}
 
+	static ShaderDataType ShaderDataTypeFromString(std::string name)
+	{
+		if (name == "float")
+			return ShaderDataType::Float;
+		else if (name == "vec2")
+			return ShaderDataType::Float2;
+		else if (name == "vec3")
+			return ShaderDataType::Float3;
+		else if (name == "vec4")
+			return ShaderDataType::Float4;
+		else if (name == "mat3")
+			return ShaderDataType::Mat3;
+		else if (name == "mat4")
+			return ShaderDataType::Mat4;
+		else if (name == "int")
+			return ShaderDataType::Int;
+		else if (name == "ivec2")
+			return ShaderDataType::Int2;
+		else if (name == "ivec3")
+			return ShaderDataType::Int3;
+		else if (name == "ivec4")
+			return ShaderDataType::Int4;
+		else if (name == "bool")
+			return ShaderDataType::Bool;
+	}
+
 	// BUFFER ELEMENT ////////////////////////////////////////////////////////////
 
 	struct BufferElement
@@ -130,7 +156,6 @@ namespace Pyro
 	{
 	public:
 		virtual ~IndexBuffer() {}
-
 
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;

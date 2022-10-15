@@ -16,7 +16,7 @@ public:
 			 0.0f,	0.5f, 0.0f, 0.8f, 0.8f, 0.3f, 1.0f
 		};
 
-		std::shared_ptr<Pyro::VertexBuffer> m_VertexBuffer;
+		Pyro::Ref<Pyro::VertexBuffer> m_VertexBuffer;
 		m_VertexBuffer.reset(Pyro::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		Pyro::BufferLayout layout = {
@@ -32,7 +32,7 @@ public:
 			0, 1, 2
 		};
 
-		std::shared_ptr<Pyro::IndexBuffer> m_IndexBuffer;
+		Pyro::Ref<Pyro::IndexBuffer> m_IndexBuffer;
 		m_IndexBuffer.reset(Pyro::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 
 		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
@@ -48,7 +48,7 @@ public:
 			-0.5f,  0.5f, 0.0f
 		};
 
-		std::shared_ptr<Pyro::VertexBuffer> squareVB;
+		Pyro::Ref<Pyro::VertexBuffer> squareVB;
 		squareVB.reset(Pyro::VertexBuffer::Create(vertices2, sizeof(vertices2)));
 
 
@@ -62,7 +62,7 @@ public:
 			2, 3, 0
 		};
 
-		std::shared_ptr<Pyro::IndexBuffer> squareIB;
+		Pyro::Ref<Pyro::IndexBuffer> squareIB;
 		squareIB.reset(Pyro::IndexBuffer::Create(indices2, sizeof(indices2)));
 
 		m_SquareVA->SetIndexBuffer(squareIB);
@@ -198,11 +198,11 @@ public:
 	}
 
 private:
-	std::shared_ptr<Pyro::Shader> m_Shader;
-	std::shared_ptr<Pyro::VertexArray> m_VertexArray;
+	Pyro::Ref<Pyro::Shader> m_Shader;
+	Pyro::Ref<Pyro::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Pyro::Shader> m_Shader2;
-	std::shared_ptr<Pyro::VertexArray> m_SquareVA;
+	Pyro::Ref<Pyro::Shader> m_Shader2;
+	Pyro::Ref<Pyro::VertexArray> m_SquareVA;
 
 	Pyro::OrthographicCamera m_Camera;
 

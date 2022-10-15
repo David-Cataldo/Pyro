@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>PY_PLATFORM_WINDOWS;PY_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Pyro\vendor\spdlog\include;..\Pyro\src;..\Pyro\vendor;..\Pyro\vendor\glm;..\Pyro\vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Pyro\vendor\spdlog\include;..\Pyro\src;..\Pyro\vendor;..\Pyro\vendor\glm;..\Pyro\vendor\entt\include;..\Pyro\vendor\OBJ_loader\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -95,7 +95,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>PY_PLATFORM_WINDOWS;PY_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Pyro\vendor\spdlog\include;..\Pyro\src;..\Pyro\vendor;..\Pyro\vendor\glm;..\Pyro\vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Pyro\vendor\spdlog\include;..\Pyro\src;..\Pyro\vendor;..\Pyro\vendor\glm;..\Pyro\vendor\entt\include;..\Pyro\vendor\OBJ_loader\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -115,7 +115,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>PY_PLATFORM_WINDOWS;PY_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Pyro\vendor\spdlog\include;..\Pyro\src;..\Pyro\vendor;..\Pyro\vendor\glm;..\Pyro\vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Pyro\vendor\spdlog\include;..\Pyro\src;..\Pyro\vendor;..\Pyro\vendor\glm;..\Pyro\vendor\entt\include;..\Pyro\vendor\OBJ_loader\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
