@@ -132,9 +132,6 @@
     <ClInclude Include="src\Pyro\Renderer\GraphicsContext.h">
       <Filter>src\Pyro\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Pyro\Renderer\Mesh.h">
-      <Filter>src\Pyro\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="src\Pyro\Renderer\OrthographicCamera.h">
       <Filter>src\Pyro\Renderer</Filter>
     </ClInclude>
@@ -1416,6 +1413,8 @@
     <ClInclude Include="src\Pyro\ECS_Components\RenderableComponent.h" />
     <ClInclude Include="src\Pyro\Renderer\Material.h" />
     <ClInclude Include="src\Pyro\Renderer\Texture.h" />
+    <ClInclude Include="src\Pyro\IO\ShaderParser.h" />
+    <ClInclude Include="src\Pyro\PerspectiveCameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1460,9 +1459,6 @@
     <ClCompile Include="src\Pyro\Renderer\Buffer.cpp">
       <Filter>src\Pyro\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Pyro\Renderer\Mesh.cpp">
-      <Filter>src\Pyro\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="src\Pyro\Renderer\OrthographicCamera.cpp">
       <Filter>src\Pyro\Renderer</Filter>
     </ClCompile>
@@ -1494,5 +1490,7 @@
     <ClCompile Include="src\Pyro\Renderer\Model.cpp" />
     <ClCompile Include="src\Pyro\Renderer\Material.cpp" />
     <ClCompile Include="src\Pyro\Renderer\Texture.cpp" />
+    <ClCompile Include="src\Pyro\IO\ShaderParser.cpp" />
+    <ClCompile Include="src\Pyro\PerspectiveCameraController.cpp" />
   </ItemGroup>
 </Project>

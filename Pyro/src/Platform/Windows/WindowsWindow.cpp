@@ -137,10 +137,17 @@ namespace Pyro
 
 		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xPos, double yPos)
 			{
+				static double prevX = 0, prevY = 0;
+				float xChange = xPos - prevX;
+				float yChange = yPos - prevY;
+
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-				MouseMovedEvent evnt((float)xPos, (float)yPos);
+				MouseMovedEvent evnt(xChange, yChange);
 				data.EventCallback(evnt);
+
+				prevX = xPos;
+				prevY = yPos;
 			});
 	}
 

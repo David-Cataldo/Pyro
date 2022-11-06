@@ -11,6 +11,7 @@
 #include "Pyro/MouseButtonCodes.h"
 #include "Pyro/KeyCodes.h"
 #include "Pyro/Input.h"
+#include "Pyro/PerspectiveCameraController.h"
 
 #include "Pyro/ImGui/ImGuiLayer.h"
 
@@ -24,6 +25,7 @@
 
 #include "Pyro/Renderer/Camera.h"
 #include "Pyro/Renderer/OrthographicCamera.h"
+#include "Pyro/Renderer/PerspectiveCamera.h"
 // ----------------------------------
 
 // ---Entry Point--------------------

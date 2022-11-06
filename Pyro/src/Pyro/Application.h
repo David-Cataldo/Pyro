@@ -26,6 +26,10 @@ namespace Pyro
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
+		inline float GetTimestep() { return m_Timestep; }
+
+		inline static float GetFPS() { return Get().GetTimestep(); }
+
 		inline static Application& Get() { return *s_Instance; }
 		inline Window& GetWindow() { return *m_Window; }
 	
@@ -38,6 +42,7 @@ namespace Pyro
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 		float m_LastFrameTime = 0.0f;
+		Timestep m_Timestep;
 
 	private:
 		static Application* s_Instance;

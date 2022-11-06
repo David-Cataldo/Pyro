@@ -6,7 +6,7 @@ class ExampleLayer : public Pyro::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_SquarePos(0.0f)
+		: Layer("Example"), m_CameraController(45.0f, 1.6/0.9, 0.1f, 100.0f)
 	{
 		m_VertexArray.reset(Pyro::VertexArray::Create());
 
@@ -41,11 +41,15 @@ public:
 
 		m_SquareVA.reset(Pyro::VertexArray::Create());
 
-		float vertices2[4 * 3] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,	0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float vertices2[8 * 3]{
+		-1, -1,  0.5, //0
+		 1, -1,  0.5, //1
+		-1,  1,  0.5, //2
+		 1,  1,  0.5, //3
+		-1, -1, -0.5, //4
+		 1, -1, -0.5, //5
+		-1,  1, -0.5, //6
+		 1,  1, -0.5  //7
 		};
 
 		Pyro::Ref<Pyro::VertexBuffer> squareVB;
@@ -57,10 +61,32 @@ public:
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
-		uint32_t indices2[3 * 2] = {
-			0, 1, 2,
-			2, 3, 0
+		uint32_t indices2[6 * 6]{
+			//Top
+			2, 6, 7,
+			2, 3, 7,
+
+			//Bottom
+			0, 4, 5,
+			0, 1, 5,
+
+			//Left
+			0, 2, 6,
+			0, 4, 6,
+
+			//Right
+			1, 3, 7,
+			1, 5, 7,
+
+			//Front
+			0, 2, 3,
+			0, 1, 3,
+
+			//Back
+			4, 6, 7,
+			4, 5, 7
 		};
+
 
 		Pyro::Ref<Pyro::IndexBuffer> squareIB;
 		squareIB.reset(Pyro::IndexBuffer::Create(indices2, sizeof(indices2)));
@@ -144,57 +170,28 @@ public:
 
 	void OnUpdate(Pyro::Timestep ts) override
 	{
-		if(Pyro::Input::IsKeyPressed(PY_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		else if (Pyro::Input::IsKeyPressed(PY_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 
-		if (Pyro::Input::IsKeyPressed(PY_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-		else if (Pyro::Input::IsKeyPressed(PY_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-
-
-
-		if (Pyro::Input::IsKeyPressed(PY_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-		else if (Pyro::Input::IsKeyPressed(PY_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
-
-
-
-		if (Pyro::Input::IsKeyPressed(PY_KEY_J))
-			m_SquarePos.x -= m_SquareMoveSpeed * ts;
-		else if (Pyro::Input::IsKeyPressed(PY_KEY_L))
-			m_SquarePos.x += m_SquareMoveSpeed * ts;
-
-		if (Pyro::Input::IsKeyPressed(PY_KEY_I))
-			m_SquarePos.y += m_SquareMoveSpeed * ts;
-		else if (Pyro::Input::IsKeyPressed(PY_KEY_K))
-			m_SquarePos.y -= m_SquareMoveSpeed * ts;
-
+		m_CameraController.OnUpdate(ts);
+		
 
 
 		Pyro::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Pyro::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
+
+		Pyro::Renderer::BeginScene(m_CameraController.GetCamera());
 
 
-		Pyro::Renderer::BeginScene(m_Camera);
-
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_SquarePos);
-
-		Pyro::Renderer::Submit(m_SquareVA, m_Shader2, transform);
+		Pyro::Renderer::Submit(m_SquareVA, m_Shader2);
 		Pyro::Renderer::Submit(m_VertexArray, m_Shader);
 
 		Pyro::Renderer::EndScene();
 	}
-
+	
 	void OnEvent(Pyro::Event& evnt) override
 	{
-
+		m_CameraController.OnEvent(evnt);
+		
 	}
 
 private:
@@ -204,16 +201,7 @@ private:
 	Pyro::Ref<Pyro::Shader> m_Shader2;
 	Pyro::Ref<Pyro::VertexArray> m_SquareVA;
 
-	Pyro::OrthographicCamera m_Camera;
-
-	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 4.0f;
-
-	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 45.0f;
-
-	glm::vec3 m_SquarePos;
-	float m_SquareMoveSpeed = 1.0f;
+	Pyro::PerspectiveCameraController m_CameraController;
 };
 
 class Sandbox : public Pyro::Application

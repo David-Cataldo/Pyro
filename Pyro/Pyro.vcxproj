@@ -167,11 +167,11 @@
     <ClInclude Include="src\Pyro\LayerStack.h" />
     <ClInclude Include="src\Pyro\Log.h" />
     <ClInclude Include="src\Pyro\MouseButtonCodes.h" />
+    <ClInclude Include="src\Pyro\PerspectiveCameraController.h" />
     <ClInclude Include="src\Pyro\Renderer\Buffer.h" />
     <ClInclude Include="src\Pyro\Renderer\Camera.h" />
     <ClInclude Include="src\Pyro\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Pyro\Renderer\Material.h" />
-    <ClInclude Include="src\Pyro\Renderer\Mesh.h" />
     <ClInclude Include="src\Pyro\Renderer\Model.h" />
     <ClInclude Include="src\Pyro\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Pyro\Renderer\PerspectiveCamera.h" />
@@ -616,9 +616,9 @@
     <ClCompile Include="src\Pyro\Layer.cpp" />
     <ClCompile Include="src\Pyro\LayerStack.cpp" />
     <ClCompile Include="src\Pyro\Log.cpp" />
+    <ClCompile Include="src\Pyro\PerspectiveCameraController.cpp" />
     <ClCompile Include="src\Pyro\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Pyro\Renderer\Material.cpp" />
-    <ClCompile Include="src\Pyro\Renderer\Mesh.cpp" />
     <ClCompile Include="src\Pyro\Renderer\Model.cpp" />
     <ClCompile Include="src\Pyro\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Pyro\Renderer\PerspectiveCamera.cpp" />

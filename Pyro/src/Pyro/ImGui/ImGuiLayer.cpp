@@ -64,8 +64,17 @@ namespace Pyro
 
 	void ImGuiLayer::OnImGuiRender()
 	{
-		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
+		static float timeSinceFPSDisplay = 0.0f;
+		timeSinceFPSDisplay += Application::GetFPS();
+		static float fps = 1/Application::GetFPS();
+		if (timeSinceFPSDisplay >= 0.25)
+		{
+			fps = 1 / Application::GetFPS();
+			timeSinceFPSDisplay = 0.0f;
+		}
+		ImGui::Begin("FPS");
+		ImGui::Text("FPS: %f", fps);
+		ImGui::End();
 	}
 
 	void ImGuiLayer::Begin()
