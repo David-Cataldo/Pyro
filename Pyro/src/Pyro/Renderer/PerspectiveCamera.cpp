@@ -38,6 +38,7 @@ namespace Pyro
 		glm::quat rot = glm::angleAxis(glm::radians(angle), axis);
 
 		m_Rotation = glm::normalize(rot) * m_Rotation;
+		m_Rotation.z = 0.0f;
 
 		m_ForwardVector = CalcForwardVector();
 		CalculateViewMatrix();

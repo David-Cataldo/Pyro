@@ -14,13 +14,18 @@ namespace Pyro
 	{
 	}
 
-	void Renderer::Submit(const Ref<VertexArray>& vertexArray, const Ref<Shader>& shader, const glm::mat4& transform)
+	void Renderer::Submit(const Ref<Model>& model)
 	{
-		shader->Bind();
-		shader->UploadUniformMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
-		shader->UploadUniformMat4("u_Transform", transform);
+		for (Ref<Mesh> m : model->GetMeshes())
+		{
+			m->GetMat()->GetShader()->Bind();
+			m->GetMat()->GetShader()->UploadUniformMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
+			m->GetMat()->GetShader()->UploadUniformMat4("u_Transform", *(m->GetTransform()));
 
-		vertexArray->Bind();
-		RenderCommand::DrawIndexed(vertexArray);
+
+			m->GetVertexArray()->Bind();
+			m->GetMat()->GetTexture()->Bind();
+			RenderCommand::DrawIndexed(m->GetVertexArray());
+		}
 	}
 }

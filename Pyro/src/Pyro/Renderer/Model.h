@@ -1,19 +1,22 @@
 #pragma once
 
-#include "Pyro/Renderer/VertexArray.h"
-#include "Pyro/Renderer/Material.h"
-#include "Pyro/ECS_Components/TransformComponent.h"
-
+#include "Mesh.h"
 
 namespace Pyro
 {
 	class Model
 	{
+	public:
+		Model(std::vector<Ref<Mesh>> mesh = std::vector<Ref<Mesh>>())
+			: m_Meshes(mesh)
+		{}
+
+		const std::vector<Ref<Mesh>>& GetMeshes() { return m_Meshes; }
+		
+		Ref<Mesh>& operator[] (int);
 
 
 	private:
-		Ref<VertexArray> m_VertexArray;
-		Material m_Material;
-		TransformComponent m_Transform;
+		std::vector<Ref<Mesh>> m_Meshes;
 	};
 }

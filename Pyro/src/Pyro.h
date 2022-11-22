@@ -22,6 +22,8 @@
 #include "Pyro/Renderer/Buffer.h"
 #include "Pyro/Renderer/Shader.h"
 #include "Pyro/Renderer/VertexArray.h"
+#include "Pyro/Renderer/Material.h"
+#include "Pyro/Renderer/Texture.h"
 
 #include "Pyro/Renderer/Camera.h"
 #include "Pyro/Renderer/OrthographicCamera.h"
@@ -31,3 +33,8 @@
 // ---Entry Point--------------------
 #include "Pyro/EntryPoint.h"
 // ----------------------------------
+
+#include "Pyro/ECS_Components/TransformComponent.h"
+
+#define STB_IMAGE_IMPLEMENTATION
+#include "../vendor/stbi/stb_image.h"

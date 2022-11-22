@@ -5,7 +5,7 @@ namespace Pyro
 {
 	std::unordered_map<ShaderDataType, std::string> ShaderParser::ParseUniforms(std::string ShaderLoc, std::string uniformPrefix)
 	{
-		std::ifstream shader("shader.txt");
+		std::ifstream shader(ShaderLoc);
 		std::unordered_map<ShaderDataType, std::string> uniforms;
 
 		std::string currentLine;

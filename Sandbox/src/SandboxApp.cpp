@@ -8,48 +8,23 @@ public:
 	ExampleLayer()
 		: Layer("Example"), m_CameraController(45.0f, 1.6/0.9, 0.1f, 100.0f)
 	{
-		m_VertexArray.reset(Pyro::VertexArray::Create());
 
-		float vertices[3 * 7] = {
-			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
-			 0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f,
-			 0.0f,	0.5f, 0.0f, 0.8f, 0.8f, 0.3f, 1.0f
-		};
-
-		Pyro::Ref<Pyro::VertexBuffer> m_VertexBuffer;
-		m_VertexBuffer.reset(Pyro::VertexBuffer::Create(vertices, sizeof(vertices)));
-
-		Pyro::BufferLayout layout = {
-			{ Pyro::ShaderDataType::Float3, "a_Position"},
-			{ Pyro::ShaderDataType::Float4, "a_Color"}
-		};
-
-		m_VertexBuffer->SetLayout(layout);
-		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
-
-
-		uint32_t indices[3] = {
-			0, 1, 2
-		};
-
-		Pyro::Ref<Pyro::IndexBuffer> m_IndexBuffer;
-		m_IndexBuffer.reset(Pyro::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
-
-		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
-
-
+		Pyro::Ref<Pyro::TransformComponent> m_Transform;
+		Pyro::Ref<Pyro::Material> m_Mat;
+		Pyro::Ref<Pyro::VertexArray> m_SquareVA;
+		Pyro::Ref<Pyro::Mesh> m_Mesh;
 
 		m_SquareVA.reset(Pyro::VertexArray::Create());
 
-		float vertices2[8 * 3]{
-		-1, -1,  0.5, //0
-		 1, -1,  0.5, //1
-		-1,  1,  0.5, //2
-		 1,  1,  0.5, //3
-		-1, -1, -0.5, //4
-		 1, -1, -0.5, //5
-		-1,  1, -0.5, //6
-		 1,  1, -0.5  //7
+		float vertices2[8 * 5]{
+		-1, -1,  0.5, -1, -1,//0
+		 1, -1,  0.5,  1, -1,//1
+		-1,  1,  0.5, -1,  1,//2
+		 1,  1,  0.5,  1,  1,//3
+		-1, -1, -0.5, -1, -1,//4
+		 1, -1, -0.5,  1, -1,//5
+		-1,  1, -0.5, -1,  1,//6
+		 1,  1, -0.5,  1,  1//7
 		};
 
 		Pyro::Ref<Pyro::VertexBuffer> squareVB;
@@ -57,7 +32,8 @@ public:
 
 
 		squareVB->SetLayout({
-				{ Pyro::ShaderDataType::Float3, "a_Position"}
+				{ Pyro::ShaderDataType::Float3, "a_Position"},
+				{ Pyro::ShaderDataType::Float2, "a_TextureCoords"}
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
@@ -93,79 +69,23 @@ public:
 
 		m_SquareVA->SetIndexBuffer(squareIB);
 
-		std::string vertexSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec4 a_Color;
+		
+		Pyro::Ref<Pyro::Shader> m_Shader2;
+		m_Shader2.reset(Pyro::Shader::Create("Assets/Shaders/Test.vert.txt", "Assets/Shaders/Test.frag.txt"));
+		m_Transform.reset(new Pyro::TransformComponent(glm::mat4(1.0f)));
 
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
+		Pyro::Ref<Pyro::Texture> m_Tex;
+		m_Tex.reset(Pyro::Texture::Create("Assets/Textures/brick.png"));
 
-			out vec3 v_Position;
-			out vec4 v_Color;
+		m_Mat.reset(new Pyro::Material(m_Shader2, m_Tex));
 
-			void main()
-			{
-				v_Position = a_Position;
-				v_Color = a_Color;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
-			}
+		m_Mesh.reset(new Pyro::Mesh());
+		m_Mesh->Create(m_SquareVA, m_Mat, m_Transform);
+		m_Mesh->GetMat()->GetTexture()->LoadTextureAlpha();
 
-		)";
-
-		std::string fragmentSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) out vec4 color;
-
-			in vec3 v_Position;
-			in vec4 v_Color;
-
-			void main()
-			{
-				color = v_Color;
-			}
-
-		)";
-
-		m_Shader.reset(Pyro::Shader::Create(vertexSrc, fragmentSrc));
-
-		std::string vertexSrc2 = R"(
-			#version 330 core
-			
-			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec4 a_Color;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec3 v_Position;
-
-			void main()
-			{
-				v_Position = a_Position;
-			    gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
-
-			}
-
-		)";
-
-		std::string fragmentSrc2 = R"(
-			#version 330 core
-			
-			layout(location = 0) out vec4 color;
-
-			in vec3 v_Position;
-
-			void main()
-			{
-				color = vec4(0.0, 0.0, 1.0, 1.0);
-			}
-
-		)";
-
-		m_Shader2.reset(Pyro::Shader::Create(vertexSrc2, fragmentSrc2));
+		std::vector<Pyro::Ref<Pyro::Mesh>> meshes;
+		meshes.push_back(m_Mesh);
+		m_Model.reset(new Pyro::Model(meshes));
 	}
 
 	void OnUpdate(Pyro::Timestep ts) override
@@ -181,26 +101,18 @@ public:
 
 		Pyro::Renderer::BeginScene(m_CameraController.GetCamera());
 
-
-		Pyro::Renderer::Submit(m_SquareVA, m_Shader2);
-		Pyro::Renderer::Submit(m_VertexArray, m_Shader);
-
+		Pyro::Renderer::Submit(m_Model);
+		(*m_Model)[0]->GetTransform()->Translate(glm::vec3(0.1f * ts, 0.0f, 0.0f));
 		Pyro::Renderer::EndScene();
 	}
 	
 	void OnEvent(Pyro::Event& evnt) override
 	{
 		m_CameraController.OnEvent(evnt);
-		
 	}
 
 private:
-	Pyro::Ref<Pyro::Shader> m_Shader;
-	Pyro::Ref<Pyro::VertexArray> m_VertexArray;
-
-	Pyro::Ref<Pyro::Shader> m_Shader2;
-	Pyro::Ref<Pyro::VertexArray> m_SquareVA;
-
+	Pyro::Ref<Pyro::Model> m_Model;
 	Pyro::PerspectiveCameraController m_CameraController;
 };
 

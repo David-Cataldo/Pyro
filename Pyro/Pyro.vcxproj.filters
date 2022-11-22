@@ -19,8 +19,14 @@
     <Filter Include="src\Pyro\Core">
       <UniqueIdentifier>{3EABAC91-AA6B-28C8-73A6-7145DF256DA4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Pyro\ECS_Components">
+      <UniqueIdentifier>{B531E077-2169-280F-2A73-8C3296294F08}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Pyro\Events">
       <UniqueIdentifier>{4A84A6B4-B60F-1479-BF20-976D2B2B7079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Pyro\IO">
+      <UniqueIdentifier>{0D67B93D-791C-3233-0211-2C0A6EC52837}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Pyro\ImGui">
       <UniqueIdentifier>{D0D8ACC7-BCA6-A0CD-A53A-11F491A77C32}</UniqueIdentifier>
@@ -87,6 +93,12 @@
     <ClInclude Include="src\Pyro\Core\Timestep.h">
       <Filter>src\Pyro\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pyro\ECS_Components\RenderableComponent.h">
+      <Filter>src\Pyro\ECS_Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\ECS_Components\TransformComponent.h">
+      <Filter>src\Pyro\ECS_Components</Filter>
+    </ClInclude>
     <ClInclude Include="src\Pyro\EntryPoint.h">
       <Filter>src\Pyro</Filter>
     </ClInclude>
@@ -101,6 +113,12 @@
     </ClInclude>
     <ClInclude Include="src\Pyro\Events\MouseEvent.h">
       <Filter>src\Pyro\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\IO\Model_Importer.h">
+      <Filter>src\Pyro\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\IO\ShaderParser.h">
+      <Filter>src\Pyro\IO</Filter>
     </ClInclude>
     <ClInclude Include="src\Pyro\ImGui\ImGuiLayer.h">
       <Filter>src\Pyro\ImGui</Filter>
@@ -123,6 +141,9 @@
     <ClInclude Include="src\Pyro\MouseButtonCodes.h">
       <Filter>src\Pyro</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pyro\PerspectiveCameraController.h">
+      <Filter>src\Pyro</Filter>
+    </ClInclude>
     <ClInclude Include="src\Pyro\Renderer\Buffer.h">
       <Filter>src\Pyro\Renderer</Filter>
     </ClInclude>
@@ -130,6 +151,12 @@
       <Filter>src\Pyro\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Pyro\Renderer\GraphicsContext.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Material.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Mesh.h">
       <Filter>src\Pyro\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Pyro\Renderer\OrthographicCamera.h">
@@ -148,6 +175,9 @@
       <Filter>src\Pyro\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Pyro\Renderer\Shader.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Texture.h">
       <Filter>src\Pyro\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Pyro\Renderer\VertexArray.h">
@@ -1407,14 +1437,11 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Pyro\IO\Model_Importer.h" />
+    <ClInclude Include="vendor\stbi\stb_image.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
+    <ClInclude Include="vendor\OBJ_loader\include\OBJ_Loader.h" />
+    <ClInclude Include="src\Pyro\IO\FileReader.h" />
     <ClInclude Include="src\Pyro\Renderer\Model.h" />
-    <ClInclude Include="src\Pyro\ECS_Components\TransformComponent.h" />
-    <ClInclude Include="src\Pyro\ECS_Components\RenderableComponent.h" />
-    <ClInclude Include="src\Pyro\Renderer\Material.h" />
-    <ClInclude Include="src\Pyro\Renderer\Texture.h" />
-    <ClInclude Include="src\Pyro\IO\ShaderParser.h" />
-    <ClInclude Include="src\Pyro\PerspectiveCameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1441,6 +1468,12 @@
     <ClCompile Include="src\Pyro\Application.cpp">
       <Filter>src\Pyro</Filter>
     </ClCompile>
+    <ClCompile Include="src\Pyro\IO\Model_Importer.cpp">
+      <Filter>src\Pyro\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\IO\ShaderParser.cpp">
+      <Filter>src\Pyro\IO</Filter>
+    </ClCompile>
     <ClCompile Include="src\Pyro\ImGui\ImGuiBuild.cpp">
       <Filter>src\Pyro\ImGui</Filter>
     </ClCompile>
@@ -1456,7 +1489,13 @@
     <ClCompile Include="src\Pyro\Log.cpp">
       <Filter>src\Pyro</Filter>
     </ClCompile>
+    <ClCompile Include="src\Pyro\PerspectiveCameraController.cpp">
+      <Filter>src\Pyro</Filter>
+    </ClCompile>
     <ClCompile Include="src\Pyro\Renderer\Buffer.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\Material.cpp">
       <Filter>src\Pyro\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Pyro\Renderer\OrthographicCamera.cpp">
@@ -1477,6 +1516,9 @@
     <ClCompile Include="src\Pyro\Renderer\Shader.cpp">
       <Filter>src\Pyro\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\Texture.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Pyro\Renderer\VertexArray.cpp">
       <Filter>src\Pyro\Renderer</Filter>
     </ClCompile>
@@ -1486,11 +1528,8 @@
     <ClCompile Include="src\pypch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Pyro\IO\Model_Importer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Mesh.cpp" />
     <ClCompile Include="src\Pyro\Renderer\Model.cpp" />
-    <ClCompile Include="src\Pyro\Renderer\Material.cpp" />
-    <ClCompile Include="src\Pyro\Renderer\Texture.cpp" />
-    <ClCompile Include="src\Pyro\IO\ShaderParser.cpp" />
-    <ClCompile Include="src\Pyro\PerspectiveCameraController.cpp" />
   </ItemGroup>
 </Project>

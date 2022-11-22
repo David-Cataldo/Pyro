@@ -3,5 +3,8 @@
 
 namespace Pyro
 {
-
+	Ref<Mesh>& Model::operator[](int index)
+	{
+		return m_Meshes[index];
+	}
 }

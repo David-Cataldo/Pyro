@@ -144,6 +144,7 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -158,10 +159,11 @@
     <ClInclude Include="src\Pyro\Events\Event.h" />
     <ClInclude Include="src\Pyro\Events\KeyEvent.h" />
     <ClInclude Include="src\Pyro\Events\MouseEvent.h" />
-    <ClInclude Include="src\Pyro\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Pyro\Input.h" />
+    <ClInclude Include="src\Pyro\IO\FileReader.h" />
     <ClInclude Include="src\Pyro\IO\Model_Importer.h" />
     <ClInclude Include="src\Pyro\IO\ShaderParser.h" />
+    <ClInclude Include="src\Pyro\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Pyro\Input.h" />
     <ClInclude Include="src\Pyro\KeyCodes.h" />
     <ClInclude Include="src\Pyro\Layer.h" />
     <ClInclude Include="src\Pyro\LayerStack.h" />
@@ -172,6 +174,7 @@
     <ClInclude Include="src\Pyro\Renderer\Camera.h" />
     <ClInclude Include="src\Pyro\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Pyro\Renderer\Material.h" />
+    <ClInclude Include="src\Pyro\Renderer\Mesh.h" />
     <ClInclude Include="src\Pyro\Renderer\Model.h" />
     <ClInclude Include="src\Pyro\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Pyro\Renderer\PerspectiveCamera.h" />
@@ -599,26 +602,30 @@
     <ClInclude Include="vendor\glm\glm\vec3.hpp" />
     <ClInclude Include="vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="vendor\OBJ_loader\include\OBJ_Loader.h" />
+    <ClInclude Include="vendor\stbi\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Pyro\Application.cpp" />
-    <ClCompile Include="src\Pyro\ImGui\ImGuiBuild.cpp" />
-    <ClCompile Include="src\Pyro\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Pyro\IO\Model_Importer.cpp" />
     <ClCompile Include="src\Pyro\IO\ShaderParser.cpp" />
+    <ClCompile Include="src\Pyro\ImGui\ImGuiBuild.cpp" />
+    <ClCompile Include="src\Pyro\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Pyro\Layer.cpp" />
     <ClCompile Include="src\Pyro\LayerStack.cpp" />
     <ClCompile Include="src\Pyro\Log.cpp" />
     <ClCompile Include="src\Pyro\PerspectiveCameraController.cpp" />
     <ClCompile Include="src\Pyro\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Pyro\Renderer\Material.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Mesh.cpp" />
     <ClCompile Include="src\Pyro\Renderer\Model.cpp" />
     <ClCompile Include="src\Pyro\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Pyro\Renderer\PerspectiveCamera.cpp" />

@@ -14,6 +14,7 @@
 #include <unordered_set>
 
 #include "Pyro/Log.h"
+#include "Pyro/IO/FileReader.h"
 
 #ifdef PY_PLATFORM_WINDOWS
 	#include <Windows.h>

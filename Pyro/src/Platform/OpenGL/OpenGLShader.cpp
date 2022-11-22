@@ -15,7 +15,8 @@ namespace Pyro
 
 		// Send the vertex shader source code to GL
 		// Note that std::string's .c_str is NULL character terminated.
-		const GLchar* source = vertexSrc.c_str();
+		std::string code = ReadFile(vertexSrc);
+		const GLchar* source = code.c_str();
 		glShaderSource(vertexShader, 1, &source, 0);
 
 		// Compile the vertex shader
@@ -44,8 +45,9 @@ namespace Pyro
 		GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
 		// Send the fragment shader source code to GL
-		// Note that std::string's .c_str is NULL character terminated.
-		source = fragmentSrc.c_str();
+		// Note that std::string's .c_str is NULL character terminated
+		code = ReadFile(fragmentSrc);
+		source = code.c_str();
 		glShaderSource(fragmentShader, 1, &source, 0);
 
 		// Compile the fragment shader
@@ -128,6 +130,61 @@ namespace Pyro
 		m_Bound = false;
 	}
 
+	void OpenGLShader::UploadUniformFloat(const std::string& name, float val)
+	{
+		bool unbind = !m_Bound;
+		Bind();
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		PY_ASSERT(location != -1, "Uniform location not found");
+		glUniform1f(location, val);
+		if (unbind)
+			Unbind();
+	}
+
+	void OpenGLShader::UploadUniformFloat2(const std::string& name, const glm::vec2& vec)
+	{
+		bool unbind = !m_Bound;
+		Bind();
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		PY_ASSERT(location != -1, "Uniform location not found");
+		glUniform2fv(location, 1, glm::value_ptr(vec));
+		if (unbind)
+			Unbind();
+	}
+
+	void OpenGLShader::UploadUniformFloat3(const std::string& name, const glm::vec3& vec)
+	{
+		bool unbind = !m_Bound;
+		Bind();
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		PY_ASSERT(location != -1, "Uniform location not found");
+		glUniform3fv(location, 1, glm::value_ptr(vec));
+		if (unbind)
+			Unbind();
+	}
+
+	void OpenGLShader::UploadUniformFloat4(const std::string& name, const glm::vec4& vec)
+	{
+		bool unbind = !m_Bound;
+		Bind();
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		PY_ASSERT(location != -1, "Uniform location not found");
+		glUniform4fv(location, 1, glm::value_ptr(vec));
+		if (unbind)
+			Unbind();
+	}
+
+	void OpenGLShader::UploadUniformMat3(const std::string& name, const glm::mat3& matrix)
+	{
+		bool unbind = !m_Bound;
+		Bind();
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		PY_ASSERT(location != -1, "Uniform location not found");
+		glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
+		if (unbind)
+			Unbind();
+	}
+
 	void OpenGLShader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix)
 	{
 		bool unbind = !m_Bound;
@@ -136,6 +193,56 @@ namespace Pyro
 		PY_ASSERT(location != -1, "Uniform location not found");
 		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 		if(unbind)
+			Unbind();
+	}
+	void OpenGLShader::UploadUniformInt(const std::string& name, int val)
+	{
+		bool unbind = !m_Bound;
+		Bind();
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		PY_ASSERT(location != -1, "Uniform location not found");
+		glUniform1i(location, val);
+		if (unbind)
+			Unbind();
+	}
+	void OpenGLShader::UploadUniformInt2(const std::string& name, const glm::ivec2& vec)
+	{
+		bool unbind = !m_Bound;
+		Bind();
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		PY_ASSERT(location != -1, "Uniform location not found");
+		glUniform2iv(location, 1, glm::value_ptr(vec));
+		if (unbind)
+			Unbind();
+	}
+	void OpenGLShader::UploadUniformInt3(const std::string& name, const glm::ivec3& vec)
+	{
+		bool unbind = !m_Bound;
+		Bind();
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		PY_ASSERT(location != -1, "Uniform location not found");
+		glUniform3iv(location, 1, glm::value_ptr(vec));
+		if (unbind)
+			Unbind();
+	}
+	void OpenGLShader::UploadUniformInt4(const std::string& name, const glm::ivec4& vec)
+	{
+		bool unbind = !m_Bound;
+		Bind();
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		PY_ASSERT(location != -1, "Uniform location not found");
+		glUniform4iv(location, 1, glm::value_ptr(vec));
+		if (unbind)
+			Unbind();
+	}
+	void OpenGLShader::UploadUniformBool(const std::string& name, bool val)
+	{
+		bool unbind = !m_Bound;
+		Bind();
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		PY_ASSERT(location != -1, "Uniform location not found");
+		glUniform1i(location, val); 
+		if (unbind)
 			Unbind();
 	}
 }

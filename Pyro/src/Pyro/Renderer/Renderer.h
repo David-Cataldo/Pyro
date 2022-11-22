@@ -3,7 +3,7 @@
 #include "RenderCommand.h"
 #include "OrthographicCamera.h"
 
-#include "Shader.h"
+#include "Model.h"
 
 namespace Pyro
 {
@@ -15,7 +15,7 @@ namespace Pyro
 		static void BeginScene(Camera& camera);
 		static void EndScene();
 
-		static void Submit(const Pyro::Ref<VertexArray>& vertexArray, const Pyro::Ref<Shader>& shader, const glm::mat4& transform = glm::mat4(1.0f));
+		static void Submit(const Ref<Model>& model);
 
 		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 
