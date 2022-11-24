@@ -46,7 +46,9 @@ project "Pyro"
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl"
+		"%{prj.name}/vendor/glm/glm/**.inl",
+		"%{prj.name}/vendor/stbi/include/stb_image.h",
+		"%{prj.name}/vendor/OBJ_loader/include/OBJ_loader.h"
 	}
 
 	includedirs 
@@ -114,7 +116,9 @@ project "Sandbox"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stbi/include/stb_image.h",
+		"%{prj.name}/vendor/OBJ_loader/include/OBJ_loader.h"
 	}
 
 	includedirs 

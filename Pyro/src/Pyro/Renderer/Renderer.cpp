@@ -20,7 +20,7 @@ namespace Pyro
 		{
 			m->GetMat()->GetShader()->Bind();
 			m->GetMat()->GetShader()->UploadUniformMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
-			m->GetMat()->GetShader()->UploadUniformMat4("u_Transform", *(m->GetTransform()));
+			m->GetMat()->GetShader()->UploadUniformMat4("u_Transform", *(model->GetTransform()));
 
 
 			m->GetVertexArray()->Bind();

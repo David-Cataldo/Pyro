@@ -3,7 +3,7 @@
 
 #include <glad/glad.h>
 
-#include "../vendor/stbi/stb_image.h"
+#include "../vendor/stbi/include/stb_image.h"
 
 namespace Pyro
 {

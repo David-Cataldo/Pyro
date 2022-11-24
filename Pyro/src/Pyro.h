@@ -37,4 +37,4 @@
 #include "Pyro/ECS_Components/TransformComponent.h"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "../vendor/stbi/stb_image.h"
+#include "../vendor/stbi/include/stb_image.h"
