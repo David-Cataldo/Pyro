@@ -16,42 +16,24 @@ public:
 
 		m_SquareVA.reset(Pyro::VertexArray::Create());
 
-		float vertices2[8 * 3]{
-		-1, -1,  0.5,//0
-		 1, -1,  0.5,//1
-		-1,  1,  0.5,//2
-		 1,  1,  0.5,//3
-		-1, -1, -0.5,//4
-		 1, -1, -0.5,//5
-		-1,  1, -0.5,//6
-		 1,  1, -0.5//7
+		float vertices2[8 * 5]{
+		-1, -1,  0.5, -1, -1,//0
+		 1, -1,  0.5,  1, -1,//1
+		-1,  1,  0.5, -1,  1,//2
+		 1,  1,  0.5,  1,  1,//3
+		-1, -1, -0.5, -1, -1,//4
+		 1, -1, -0.5,  1, -1,//5
+		-1,  1, -0.5, -1,  1,//6
+		 1,  1, -0.5,  1,  1//7
 		};
-
-		float texCoords[8 * 3]{
-		-1, -1,  0.5,//0
-		 1, -1,  0.5,//1
-		-1,  1,  0.5,//2
-		 1,  1,  0.5,//3
-		-1, -1, -0.5,//4
-		 1, -1, -0.5,//5
-		-1,  1, -0.5,//6
-		 1,  1, -0.5//7
-		};
-
-		Pyro::Ref<Pyro::VertexBuffer> texes;
-		texes.reset(Pyro::VertexBuffer::Create(texCoords, sizeof(texCoords)));
-
-		texes->SetLayout({
-				{ Pyro::ShaderDataType::Float3, "a_TextureCoords"}
-			});
-		m_SquareVA->AddVertexBuffer(texes);
 
 		Pyro::Ref<Pyro::VertexBuffer> squareVB;
 		squareVB.reset(Pyro::VertexBuffer::Create(vertices2, sizeof(vertices2)));
 
 
 		squareVB->SetLayout({
-				{ Pyro::ShaderDataType::Float3, "a_Position"}
+				{ Pyro::ShaderDataType::Float3, "a_Position"},
+				{ Pyro::ShaderDataType::Float2, "a_TextureCoords"}
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
