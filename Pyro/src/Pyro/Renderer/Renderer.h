@@ -15,7 +15,7 @@ namespace Pyro
 		static void BeginScene(Camera& camera);
 		static void EndScene();
 
-		static void Submit(const Ref<Model>& model);
+		static void Submit(Ref<Model> model);
 
 		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 

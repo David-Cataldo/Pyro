@@ -1,4 +1,9 @@
-/// @ref gtx_hash
+/// @
+/// 
+/// 
+/// 
+/// 
+///  gtx_hash
 /// @file glm/gtx/hash.hpp
 ///
 /// @see core (dependence)

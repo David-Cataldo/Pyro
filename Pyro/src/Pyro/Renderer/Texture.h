@@ -15,5 +15,7 @@ namespace Pyro
 		virtual void Bind() = 0;
 		virtual void Unbind() = 0;
 		virtual void ClearTexture() = 0;
+
+		static void LoadPlainTexture();
 	};
 }

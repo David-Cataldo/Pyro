@@ -24,6 +24,7 @@
 #include "Pyro/Renderer/VertexArray.h"
 #include "Pyro/Renderer/Material.h"
 #include "Pyro/Renderer/Texture.h"
+#include "Pyro/Renderer/Model.h"
 
 #include "Pyro/Renderer/Camera.h"
 #include "Pyro/Renderer/OrthographicCamera.h"
@@ -38,3 +39,4 @@
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "../vendor/stbi/include/stb_image.h"
+

@@ -1,4 +1,8 @@
-/// @ref gtx_intersect
+/// @
+/// 
+/// 
+/// 
+///  gtx_intersect
 /// @file glm/gtx/intersect.hpp
 ///
 /// @see core (dependence)

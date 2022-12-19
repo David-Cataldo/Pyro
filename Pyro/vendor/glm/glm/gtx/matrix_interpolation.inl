@@ -1,4 +1,12 @@
-/// @ref gtx_matrix_interpolation
+/// @
+
+
+
+
+
+
+
+gtx_matrix_interpolation
 
 #include "../ext/scalar_constants.hpp"
 

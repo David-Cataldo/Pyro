@@ -148,6 +148,8 @@ namespace Pyro
 		virtual const BufferLayout& GetLayout() const = 0;
 
 		static VertexBuffer* Create(float* vertices, uint32_t size);
+		static VertexBuffer* Create(const std::vector<float>& vertices, uint32_t size);
+
 	};
 
 	// INDEX BUFFER ////////////////////////////////////////////////////////////
@@ -163,5 +165,6 @@ namespace Pyro
 		virtual uint32_t GetCount() const = 0;
 
 		static IndexBuffer* Create(uint32_t* indices, uint32_t size);
+		static IndexBuffer* Create(const std::vector<uint32_t>& indices, uint32_t size);
 	};
 }

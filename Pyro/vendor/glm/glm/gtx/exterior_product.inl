@@ -1,4 +1,5 @@
-/// @ref gtx_exterior_product
+/// @
+gtx_exterior_product
 
 #include <limits>
 

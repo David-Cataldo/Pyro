@@ -17,8 +17,13 @@ namespace Pyro
 		virtual void Unbind() override;
 		virtual void ClearTexture() override;
 
+		static bool LoadPlainTexture();
+
 	private:
 		uint32_t m_TextureID;
 		std::string m_FileLoc;
+
+		static uint32_t s_PlainTextureID;
+
 	};
 }

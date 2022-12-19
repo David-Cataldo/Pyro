@@ -18,4 +18,9 @@ namespace Pyro
 		PY_CORE_ASSERT(false, "Unknown RendererAPI");
 		return nullptr;
 	}
+
+	void Texture::LoadPlainTexture()
+	{
+		OpenGLTexture::LoadPlainTexture();
+	}
 }

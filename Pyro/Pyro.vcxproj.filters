@@ -132,9 +132,6 @@
     <ClInclude Include="src\Pyro\IO\FileReader.h">
       <Filter>src\Pyro\IO</Filter>
     </ClInclude>
-    <ClInclude Include="src\Pyro\IO\Model_Importer.h">
-      <Filter>src\Pyro\IO</Filter>
-    </ClInclude>
     <ClInclude Include="src\Pyro\IO\ShaderParser.h">
       <Filter>src\Pyro\IO</Filter>
     </ClInclude>
@@ -1464,6 +1461,7 @@
     <ClInclude Include="vendor\stbi\include\stb_image.h">
       <Filter>vendor\stbi\include</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pyro\IO\tiny_obj_loader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1492,9 +1490,6 @@
     </ClCompile>
     <ClCompile Include="src\Pyro\Application.cpp">
       <Filter>src\Pyro</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Pyro\IO\Model_Importer.cpp">
-      <Filter>src\Pyro\IO</Filter>
     </ClCompile>
     <ClCompile Include="src\Pyro\IO\ShaderParser.cpp">
       <Filter>src\Pyro\IO</Filter>

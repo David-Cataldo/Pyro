@@ -1,4 +1,8 @@
-/// @ref gtc_integer
+/// @
+/// 
+/// 
+/// 
+///  gtc_integer
 /// @file glm/gtc/integer.hpp
 ///
 /// @see core (dependence)

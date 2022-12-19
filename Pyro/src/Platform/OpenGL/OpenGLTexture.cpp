@@ -7,6 +7,9 @@
 
 namespace Pyro
 {
+	 uint32_t OpenGLTexture::s_PlainTextureID;
+
+
 	OpenGLTexture::OpenGLTexture(const std::string& fileLoc)
 		: m_FileLoc(fileLoc), m_TextureID(0)
 	{}
@@ -23,6 +26,7 @@ namespace Pyro
 		if (!textData)
 		{
 			PY_ERROR("Error loading texture at: %s", m_FileLoc);
+			m_TextureID = s_PlainTextureID;
 			return false;
 		}
 
@@ -50,6 +54,7 @@ namespace Pyro
 		if (!textData)
 		{
 			PY_ERROR("Error loading texture at: %s", m_FileLoc);
+			m_TextureID = s_PlainTextureID;
 			return false;
 		}
 
@@ -69,6 +74,35 @@ namespace Pyro
 
 		return true;
 	}
+
+	
+	bool OpenGLTexture::LoadPlainTexture()
+	{
+		int width, height, bitDepth;
+		unsigned char* textData = stbi_load("Assets/Textures/plain.png", &width, &height, &bitDepth, 0);
+		if (!textData)
+		{
+			PY_ERROR("Error loading texture at:");
+			return false;
+		}
+
+		glGenTextures(1, &s_PlainTextureID);
+		glBindTexture(GL_TEXTURE_2D, s_PlainTextureID);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, textData);
+		glGenerateMipmap(GL_TEXTURE_2D);
+
+		glBindTexture(GL_TEXTURE_2D, 0);
+		stbi_image_free(textData);
+
+		return true;
+	}
+	
 
 	void OpenGLTexture::Bind()
 	{

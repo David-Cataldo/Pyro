@@ -1,4 +1,9 @@
-/// @ref gtx_matrix_major_storage
+/// @
+
+
+
+
+gtx_matrix_major_storage
 
 namespace glm
 {

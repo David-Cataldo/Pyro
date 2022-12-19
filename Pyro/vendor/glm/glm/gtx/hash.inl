@@ -1,4 +1,7 @@
-/// @ref gtx_hash
+/// @
+/// 
+/// 
+///  gtx_hash
 ///
 /// @see core (dependence)
 ///

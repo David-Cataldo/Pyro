@@ -77,7 +77,7 @@
       <PrecompiledHeaderFile>pypch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;PY_PLATFORM_WINDOWS;PY_BUILD_DLL;GLFW_INCLUDE_NONE;PY_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\entt\include;vendor\OBJ_loader\include;vendor\stbi\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\entt\include;vendor\OBJ_loader\include;vendor\stbi\include;vendor\Assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -88,7 +88,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor/Assimp/lib</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -97,7 +98,7 @@
       <PrecompiledHeaderFile>pypch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;PY_PLATFORM_WINDOWS;PY_BUILD_DLL;GLFW_INCLUDE_NONE;PY_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\entt\include;vendor\OBJ_loader\include;vendor\stbi\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\entt\include;vendor\OBJ_loader\include;vendor\stbi\include;vendor\Assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -112,7 +113,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor/Assimp/lib</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -121,7 +123,7 @@
       <PrecompiledHeaderFile>pypch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;PY_PLATFORM_WINDOWS;PY_BUILD_DLL;GLFW_INCLUDE_NONE;PY_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\entt\include;vendor\OBJ_loader\include;vendor\stbi\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\entt\include;vendor\OBJ_loader\include;vendor\stbi\include;vendor\Assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -136,7 +138,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor/Assimp/lib</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -160,10 +163,10 @@
     <ClInclude Include="src\Pyro\Events\KeyEvent.h" />
     <ClInclude Include="src\Pyro\Events\MouseEvent.h" />
     <ClInclude Include="src\Pyro\IO\FileReader.h" />
-    <ClInclude Include="src\Pyro\IO\Model_Importer.h" />
     <ClInclude Include="src\Pyro\IO\ShaderParser.h" />
     <ClInclude Include="src\Pyro\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Pyro\Input.h" />
+    <ClInclude Include="src\Pyro\IO\tiny_obj_loader.h" />
     <ClInclude Include="src\Pyro\KeyCodes.h" />
     <ClInclude Include="src\Pyro\Layer.h" />
     <ClInclude Include="src\Pyro\LayerStack.h" />
@@ -615,7 +618,6 @@
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Pyro\Application.cpp" />
-    <ClCompile Include="src\Pyro\IO\Model_Importer.cpp" />
     <ClCompile Include="src\Pyro\IO\ShaderParser.cpp" />
     <ClCompile Include="src\Pyro\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Pyro\ImGui\ImGuiLayer.cpp" />

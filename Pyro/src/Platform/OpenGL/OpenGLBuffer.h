@@ -10,6 +10,8 @@ namespace Pyro
 	{
 	public:
 		OpenGLVertexBuffer(float* vertices, uint32_t size);
+		OpenGLVertexBuffer(const std::vector<float>& vertices, uint32_t size);
+
 		virtual ~OpenGLVertexBuffer() override;
 
 		virtual void Bind() const override;
@@ -29,6 +31,8 @@ namespace Pyro
 	{
 	public:
 		OpenGLIndexBuffer(uint32_t* indices, uint32_t size);
+		OpenGLIndexBuffer(const std::vector<uint32_t>& indices, uint32_t size);
+
 		virtual ~OpenGLIndexBuffer() override;
 
 		virtual void Bind() const override;

@@ -8,7 +8,9 @@ public:
 	ExampleLayer()
 		: Layer("Example"), m_CameraController(45.0f, 1.6/0.9, 0.1f, 100.0f)
 	{
+		Pyro::Texture::LoadPlainTexture();
 
+		/*
 		Pyro::Ref<Pyro::TransformComponent> m_Transform;
 		Pyro::Ref<Pyro::Material> m_Mat;
 		Pyro::Ref<Pyro::VertexArray> m_SquareVA;
@@ -27,8 +29,11 @@ public:
 		 1,  1, -0.5,  1,  1//7
 		};
 
+		std::vector<float> verts;
+		std::copy(vertices2, vertices2 + 40, std::back_inserter(verts));
+
 		Pyro::Ref<Pyro::VertexBuffer> squareVB;
-		squareVB.reset(Pyro::VertexBuffer::Create(vertices2, sizeof(vertices2)));
+		squareVB.reset(Pyro::VertexBuffer::Create(verts, sizeof(float) * verts.size()));
 
 
 		squareVB->SetLayout({
@@ -65,9 +70,12 @@ public:
 			4, 5, 7
 		};
 
+		std::vector<uint32_t> inds;
+		std::copy(indices2, indices2 + 40, std::back_inserter(inds));
 
+		
 		Pyro::Ref<Pyro::IndexBuffer> squareIB;
-		squareIB.reset(Pyro::IndexBuffer::Create(indices2, sizeof(indices2)));
+		squareIB.reset(Pyro::IndexBuffer::Create(inds, sizeof(uint32_t) * inds.size()));
 
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -88,6 +96,9 @@ public:
 		std::vector<Pyro::Ref<Pyro::Mesh>> meshes;
 		meshes.push_back(m_Mesh);
 		m_Model.reset(new Pyro::Model(meshes));
+		*/
+		
+		m_Model.reset(new Pyro::Model("Assets/Models/camion jugete.obj"));
 	}
 
 	void OnUpdate(Pyro::Timestep ts) override
@@ -104,7 +115,7 @@ public:
 		Pyro::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		Pyro::Renderer::Submit(m_Model);
-		m_Model->GetTransform()->Translate(glm::vec3(0.1f * ts, 0.0f, 0.0f));
+		//m_Model->GetTransform()->Translate(glm::vec3(0.1f * ts, 0.0f, 0.0f));
 		Pyro::Renderer::EndScene();
 	}
 	

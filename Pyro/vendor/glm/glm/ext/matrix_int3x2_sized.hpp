@@ -1,4 +1,10 @@
-/// @ref ext_matrix_int3x2_sized
+/// @
+/// 
+/// 
+/// 
+/// 
+/// 
+///  ext_matrix_int3x2_sized
 /// @file glm/ext/matrix_int3x2_sized.hpp
 ///
 /// @see core (dependence)

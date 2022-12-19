@@ -14,10 +14,11 @@ namespace Pyro
 	{
 	}
 
-	void Renderer::Submit(const Ref<Model>& model)
+	void Renderer::Submit(Ref<Model> model)
 	{
 		for (Ref<Mesh> m : model->GetMeshes())
 		{
+			std::cout << "test";
 			m->GetMat()->GetShader()->Bind();
 			m->GetMat()->GetShader()->UploadUniformMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
 			m->GetMat()->GetShader()->UploadUniformMat4("u_Transform", *(model->GetTransform()));

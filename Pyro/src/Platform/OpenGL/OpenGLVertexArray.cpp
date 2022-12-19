@@ -46,7 +46,7 @@ namespace Pyro
 		glBindVertexArray(0);
 	}
 	
-	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
+	void OpenGLVertexArray::AddVertexBuffer(Ref<VertexBuffer> vertexBuffer)
 	{
 		PY_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex buffer has no layout!");
 
@@ -71,7 +71,7 @@ namespace Pyro
 		m_VertexBuffers.push_back(vertexBuffer);
 	}
 	
-	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer)
+	void OpenGLVertexArray::SetIndexBuffer(Ref<IndexBuffer> indexBuffer)
 	{
 		glBindVertexArray(m_RendererID);
 		indexBuffer->Bind();

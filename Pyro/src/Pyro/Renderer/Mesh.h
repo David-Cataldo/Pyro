@@ -12,8 +12,7 @@ namespace Pyro
 		Mesh() 
 			: m_VertexArray(nullptr), m_Material(nullptr)
 		{}
-		void Create(const Ref<VertexArray>& va, const Ref<Material>& mat); 
-		void CreateFromOBJFile(const std::string& fileLoc); 
+		void Create(Ref<VertexArray> va, Ref<Material> mat); 
 
 		Ref<VertexArray> GetVertexArray() { return m_VertexArray; }
 		Ref<Material> GetMat() { return m_Material; }

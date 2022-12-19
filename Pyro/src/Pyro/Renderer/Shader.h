@@ -7,6 +7,7 @@ namespace Pyro
 {
 	class Shader
 	{
+		
 	public:
 		virtual ~Shader() {}
 

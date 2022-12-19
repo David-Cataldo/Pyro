@@ -22,6 +22,19 @@ namespace Pyro
 		return nullptr;
 	}
 
+	VertexBuffer* VertexBuffer::Create(const std::vector<float>& vertices, uint32_t size)
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RendererAPI::API::None: PY_CORE_ASSERT(false, "RenderAPI::None is not supported"); return nullptr;
+		case RendererAPI::API::OpenGL: return new OpenGLVertexBuffer(vertices, size);
+
+		}
+
+		PY_CORE_ASSERT(false, "Unknown RendererAPI");
+		return nullptr;
+	}
+
 	// INDEX BUFFER ////////////////////////////////////////////////////////////
 
 	IndexBuffer* IndexBuffer::Create(uint32_t* indices, uint32_t size)
@@ -30,6 +43,18 @@ namespace Pyro
 		{
 			case RendererAPI::API::None: PY_CORE_ASSERT(false, "RenderAPI::None is not supported"); return nullptr;
 			case RendererAPI::API::OpenGL: return new OpenGLIndexBuffer(indices, size);
+		}
+
+		PY_CORE_ASSERT(false, "Unknown RendererAPI");
+		return nullptr;
+	}
+
+	IndexBuffer* IndexBuffer::Create(const std::vector<uint32_t>& indices, uint32_t size)
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RendererAPI::API::None: PY_CORE_ASSERT(false, "RenderAPI::None is not supported"); return nullptr;
+		case RendererAPI::API::OpenGL: return new OpenGLIndexBuffer(indices, size);
 		}
 
 		PY_CORE_ASSERT(false, "Unknown RendererAPI");

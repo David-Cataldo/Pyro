@@ -1,4 +1,10 @@
-/// @ref gtx_matrix_factorisation
+/// @
+
+
+
+
+
+gtx_matrix_factorisation
 
 namespace glm
 {
