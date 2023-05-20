@@ -135,6 +135,9 @@
     <ClInclude Include="src\Pyro\IO\ShaderParser.h">
       <Filter>src\Pyro\IO</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pyro\IO\tiny_obj_loader.h">
+      <Filter>src\Pyro\IO</Filter>
+    </ClInclude>
     <ClInclude Include="src\Pyro\ImGui\ImGuiLayer.h">
       <Filter>src\Pyro\ImGui</Filter>
     </ClInclude>
@@ -1461,7 +1464,6 @@
     <ClInclude Include="vendor\stbi\include\stb_image.h">
       <Filter>vendor\stbi\include</Filter>
     </ClInclude>
-    <ClInclude Include="src\Pyro\IO\tiny_obj_loader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">

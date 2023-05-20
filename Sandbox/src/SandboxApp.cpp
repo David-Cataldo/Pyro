@@ -10,7 +10,7 @@ public:
 	{
 		Pyro::Texture::LoadPlainTexture();
 
-		/*
+		
 		Pyro::Ref<Pyro::TransformComponent> m_Transform;
 		Pyro::Ref<Pyro::Material> m_Mat;
 		Pyro::Ref<Pyro::VertexArray> m_SquareVA;
@@ -96,9 +96,9 @@ public:
 		std::vector<Pyro::Ref<Pyro::Mesh>> meshes;
 		meshes.push_back(m_Mesh);
 		m_Model.reset(new Pyro::Model(meshes));
-		*/
 		
-		m_Model.reset(new Pyro::Model("Assets/Models/camion jugete.obj"));
+		
+		//m_Model.reset(new Pyro::Model("Assets/Models/camion jugete.obj"));
 	}
 
 	void OnUpdate(Pyro::Timestep ts) override
