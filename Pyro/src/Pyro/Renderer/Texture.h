@@ -8,6 +8,7 @@ namespace Pyro
 		virtual ~Texture() {}
 
 		static Texture* Create(const std::string& fileLoc);
+		static Texture* CreatePlain();
 
 		virtual bool LoadTexture() = 0;
 		virtual bool LoadTextureAlpha() = 0;

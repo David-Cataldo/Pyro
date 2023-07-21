@@ -21,7 +21,8 @@ namespace Pyro
 
 		glm::vec3 GetForwardVector() const { return m_Camera.GetForwardVector(); }
 		glm::vec3 GetPosition() const { return m_Camera.GetPosition(); }
-		glm::quat GetRotation() const { return m_Camera.GetRotation(); }
+
+		void SetPosition(const glm::vec3& pos) { m_Camera.SetPosition(pos); }
 
 	private:
 		bool OnMouseScrolled(MouseScrolledEvent& e);

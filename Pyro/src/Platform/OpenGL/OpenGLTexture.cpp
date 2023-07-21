@@ -14,6 +14,10 @@ namespace Pyro
 		: m_FileLoc(fileLoc), m_TextureID(0)
 	{}
 
+	OpenGLTexture::OpenGLTexture()
+		: m_FileLoc("Assets/Textures/plain.png"), m_TextureID(0)
+	{}
+
 	OpenGLTexture::~OpenGLTexture()
 	{
 		ClearTexture();

@@ -10,7 +10,7 @@ namespace Pyro
 		OrthographicCamera() {}
 		OrthographicCamera(float left, float right, float bottom, float top);
 
-		const glm::vec3& GetPosition() const { return m_Position; } 
+		//const glm::vec3& GetPosition() const { return m_Position; } 
 		void SetPosition(const glm::vec3& pos) { m_Position = pos; CalculateViewMatrix(); }
 
 		float GetRotation() const { return m_Rotation; }
@@ -19,6 +19,8 @@ namespace Pyro
 		virtual const glm::mat4& GetProjectionMatrix() const override { return m_ProjectionMatrix; }
 		virtual const glm::mat4& GetViewMatrix() const override { return m_ViewMatrix; }
 		virtual const glm::mat4& GetViewProjectionMatrix() const override { return m_ViewProjectionMatrix; }
+
+		virtual ~OrthographicCamera() override {}
 
 	private:
 		virtual void CalculateViewMatrix() override;

@@ -32,5 +32,23 @@ namespace Pyro
 
 		virtual void UploadUniformBool(const std::string& name, bool val) = 0;
 
+
+
+
+		virtual void UploadUniformFloatArray(const std::string& name, float* val, int count) = 0;
+		virtual void UploadUniformFloat2Array(const std::string& name, float* vec, int count) = 0;
+		virtual void UploadUniformFloat3Array(const std::string& name, float* vec, int count) = 0;
+		virtual void UploadUniformFloat4Array(const std::string& name, float* vec, int count) = 0;
+
+		virtual void UploadUniformMat3Array(const std::string& name, float* matrix, int count) = 0;
+		virtual void UploadUniformMat4Array(const std::string& name, float* matrix, int count) = 0;
+
+		virtual void UploadUniformIntArray(const std::string& name, int* val, int count) = 0;
+		virtual void UploadUniformInt2Array(const std::string& name, int* vec, int count) = 0;
+		virtual void UploadUniformInt3Array(const std::string& name, int* vec, int count) = 0;
+		virtual void UploadUniformInt4Array(const std::string& name, int* vec, int count) = 0;
+
+		virtual void UploadUniformBoolArray(const std::string& name, bool* val, int count) = 0;
+
 	};
 }

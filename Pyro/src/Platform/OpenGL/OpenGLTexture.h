@@ -8,6 +8,7 @@ namespace Pyro
 	{
 	public:
 		OpenGLTexture(const std::string& fileLoc);
+		OpenGLTexture();
 		virtual ~OpenGLTexture() override;
 
 		virtual bool LoadTexture() override;

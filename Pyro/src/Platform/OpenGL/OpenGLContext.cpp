@@ -25,6 +25,9 @@ namespace Pyro
 		PY_CORE_INFO("  Version: {0}", glGetString(GL_VERSION));
 
 		glEnable(GL_DEPTH_TEST);
+		//glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+		glFrontFace(GL_CCW);
 	}
 
 	void OpenGLContext::SwapBuffers()

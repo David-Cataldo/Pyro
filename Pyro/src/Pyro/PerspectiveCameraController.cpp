@@ -59,11 +59,8 @@ namespace Pyro
 	{
 		if (Input::IsMouseButtonPressed(PY_MOUSE_BUTTON_LEFT))
 		{
-			if (abs(e.GetX() * m_CameraRotationSpeed) > 0.1)
-				m_Camera.Rotate(e.GetX() * m_CameraRotationSpeed, PY_Y_AXIS);
-			if (abs(e.GetY() * m_CameraRotationSpeed) > 0.1)
-				m_Camera.Rotate(e.GetY() * m_CameraRotationSpeed, PY_X_AXIS);
-			//std::cout << "Mx: " << e.GetX() << ", My: " << e.GetY() << std::endl;
+			if (abs(e.GetX() * m_CameraRotationSpeed) > 0.1 || abs(e.GetY() * m_CameraRotationSpeed) > 0.1)
+				m_Camera.Rotate(e.GetY() * m_CameraRotationSpeed, e.GetX() * m_CameraRotationSpeed);
 		}
 
 

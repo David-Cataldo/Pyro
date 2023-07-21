@@ -29,6 +29,7 @@ namespace Pyro
 	OpenGLVertexArray::OpenGLVertexArray()
 	{
 		glCreateVertexArrays(1, &m_RendererID);
+		m_NumBuffers = 0;
 	}
 
 	OpenGLVertexArray::~OpenGLVertexArray()
@@ -53,19 +54,18 @@ namespace Pyro
 		glBindVertexArray(m_RendererID);
 		vertexBuffer->Bind();
 
-		uint32_t index = 0;
 		const auto& layout = vertexBuffer->GetLayout();
 		for (const auto& element : layout)
 		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index,
+			glEnableVertexAttribArray(m_NumBuffers);
+			glVertexAttribPointer(m_NumBuffers,
 				element.GetComponentCount(),
 				ShaderDataTypeToOpenGLBaseType(element.Type),
 				element.Normalized ? GL_TRUE : GL_FALSE,
 				layout.GetStride(),
 				(const void*)element.Offset);
 
-			index++;
+			m_NumBuffers++;
 		}
 
 		m_VertexBuffers.push_back(vertexBuffer);
@@ -77,5 +77,15 @@ namespace Pyro
 		indexBuffer->Bind();
 
 		m_IndexBuffer = indexBuffer;
+	}
+
+	void OpenGLVertexArray::SetMeshType(MeshType type)
+	{
+		m_MeshType = type;
+	}
+
+	MeshType OpenGLVertexArray::GetMeshType()
+	{
+		return m_MeshType;
 	}
 }

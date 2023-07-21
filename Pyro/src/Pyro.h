@@ -14,6 +14,8 @@
 #include "Pyro/PerspectiveCameraController.h"
 
 #include "Pyro/ImGui/ImGuiLayer.h"
+#include "Pyro/ImGui/ImGUIComponent.h"
+#include "Pyro/ImGui/ImGUISlider.h"
 
 // ---Renderer-----------------------
 #include "Pyro/Renderer/Renderer.h"
@@ -29,6 +31,9 @@
 #include "Pyro/Renderer/Camera.h"
 #include "Pyro/Renderer/OrthographicCamera.h"
 #include "Pyro/Renderer/PerspectiveCamera.h"
+
+#include "Pyro/Renderer/Light.h"
+#include "Pyro/Renderer/PointLight.h"
 // ----------------------------------
 
 // ---Entry Point--------------------
