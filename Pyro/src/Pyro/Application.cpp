@@ -3,15 +3,19 @@
 
 #include "Log.h"
 
-#include <glad/glad.h>
+#include "Renderer/Renderer.h"
 
 #include "Input.h"
+
+#include <GLFW/glfw3.h>
 
 namespace Pyro
 {
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
-
+	
 	Application* Application::s_Instance = nullptr;
+
+	
 
 	Application::Application()
 	{
@@ -56,11 +60,12 @@ namespace Pyro
 	{
 		while (m_Running)
 		{
-			glClearColor(1, 0, 1, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			float time = (float)glfwGetTime();
+			m_Timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
 
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(m_Timestep);
 
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)

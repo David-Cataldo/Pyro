@@ -1,4 +1,8 @@
-/// @ref gtc_matrix_inverse
+/// @
+/// 
+/// 
+/// 
+///  gtc_matrix_inverse
 /// @file glm/gtc/matrix_inverse.hpp
 ///
 /// @see core (dependence)

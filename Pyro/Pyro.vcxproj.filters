@@ -7,20 +7,41 @@
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Pyro">
       <UniqueIdentifier>{261F24CF-12EC-7EDA-3B05-6D822731B468}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Pyro\Core">
+      <UniqueIdentifier>{3EABAC91-AA6B-28C8-73A6-7145DF256DA4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Pyro\ECS_Components">
+      <UniqueIdentifier>{B531E077-2169-280F-2A73-8C3296294F08}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Pyro\Events">
       <UniqueIdentifier>{4A84A6B4-B60F-1479-BF20-976D2B2B7079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Pyro\IO">
+      <UniqueIdentifier>{0D67B93D-791C-3233-0211-2C0A6EC52837}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Pyro\ImGui">
       <UniqueIdentifier>{D0D8ACC7-BCA6-A0CD-A53A-11F491A77C32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Pyro\Renderer">
+      <UniqueIdentifier>{8CCD536F-F8E3-5105-415B-DD26ADB0228D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\OBJ_loader">
+      <UniqueIdentifier>{53D03B20-BFE6-39B6-085E-C5D774B30A3E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\OBJ_loader\include">
+      <UniqueIdentifier>{C69AF105-325D-2590-7B0D-B41CE70EFE6D}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor\glm">
       <UniqueIdentifier>{829FC5A8-6E57-07F6-D75E-E051C335A2E6}</UniqueIdentifier>
@@ -40,8 +61,32 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stbi">
+      <UniqueIdentifier>{544580C1-C0FA-F8B6-49EF-F28DB5A3EFBA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\stbi\include">
+      <UniqueIdentifier>{C78057FF-33E2-340D-BC4F-7BBF28B06BCC}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
@@ -57,6 +102,15 @@
     <ClInclude Include="src\Pyro\Core.h">
       <Filter>src\Pyro</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pyro\Core\Timestep.h">
+      <Filter>src\Pyro\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\ECS_Components\RenderableComponent.h">
+      <Filter>src\Pyro\ECS_Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\ECS_Components\TransformComponent.h">
+      <Filter>src\Pyro\ECS_Components</Filter>
+    </ClInclude>
     <ClInclude Include="src\Pyro\EntryPoint.h">
       <Filter>src\Pyro</Filter>
     </ClInclude>
@@ -71,6 +125,15 @@
     </ClInclude>
     <ClInclude Include="src\Pyro\Events\MouseEvent.h">
       <Filter>src\Pyro\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\IO\FileReader.h">
+      <Filter>src\Pyro\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\IO\ShaderParser.h">
+      <Filter>src\Pyro\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\IO\tiny_obj_loader.h">
+      <Filter>src\Pyro\IO</Filter>
     </ClInclude>
     <ClInclude Include="src\Pyro\ImGui\ImGuiLayer.h">
       <Filter>src\Pyro\ImGui</Filter>
@@ -93,11 +156,65 @@
     <ClInclude Include="src\Pyro\MouseButtonCodes.h">
       <Filter>src\Pyro</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pyro\PerspectiveCameraController.h">
+      <Filter>src\Pyro</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Buffer.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Camera.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\GraphicsContext.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Light.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Material.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Mesh.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Model.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\OrthographicCamera.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\PerspectiveCamera.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\PointLight.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\RenderCommand.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Renderer.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\RendererAPI.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Shader.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\Texture.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Renderer\VertexArray.h">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Pyro\Window.h">
       <Filter>src\Pyro</Filter>
     </ClInclude>
     <ClInclude Include="src\pypch.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\OBJ_loader\include\OBJ_loader.h">
+      <Filter>vendor\OBJ_loader\include</Filter>
     </ClInclude>
     <ClInclude Include="vendor\glm\glm\common.hpp">
       <Filter>vendor\glm\glm</Filter>
@@ -1344,8 +1461,42 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="vendor\stbi\include\stb_image.h">
+      <Filter>vendor\stbi\include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pyro\Core\GameObject.h" />
+    <ClInclude Include="src\Pyro\ImGui\ImGUISlider.h" />
+    <ClInclude Include="src\Pyro\ImGui\ImGUIComponent.h" />
+    <ClInclude Include="src\Pyro\IO\OBJ_Loader.h" />
+    <ClInclude Include="src\Pyro\Renderer\Skybox.h" />
+    <ClInclude Include="src\Pyro\Renderer\CubeMap.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLCubeMap.h" />
+    <ClInclude Include="src\Pyro\Physics\PhysicsComponent.h" />
+    <ClInclude Include="src\Pyro\Physics\CollisionBox.h" />
+    <ClInclude Include="src\Pyro\Physics\CollisionRect.h" />
+    <ClInclude Include="src\Pyro\Physics\CollisionSphere.h" />
+    <ClInclude Include="src\Pyro\Core\Math.h" />
+    <ClInclude Include="src\Pyro\Physics\PhysicsEngine.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
@@ -1354,6 +1505,9 @@
     </ClCompile>
     <ClCompile Include="src\Pyro\Application.cpp">
       <Filter>src\Pyro</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\IO\ShaderParser.cpp">
+      <Filter>src\Pyro\IO</Filter>
     </ClCompile>
     <ClCompile Include="src\Pyro\ImGui\ImGuiBuild.cpp">
       <Filter>src\Pyro\ImGui</Filter>
@@ -1370,8 +1524,64 @@
     <ClCompile Include="src\Pyro\Log.cpp">
       <Filter>src\Pyro</Filter>
     </ClCompile>
+    <ClCompile Include="src\Pyro\PerspectiveCameraController.cpp">
+      <Filter>src\Pyro</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\Buffer.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\Light.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\Material.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\Mesh.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\Model.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\PerspectiveCamera.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\PointLight.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\RenderCommand.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\Renderer.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\RendererAPI.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\Shader.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\Texture.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\VertexArray.cpp">
+      <Filter>src\Pyro\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\pypch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Pyro\Renderer\Camera.cpp" />
+    <ClCompile Include="src\Pyro\Core\GameObject.cpp" />
+    <ClCompile Include="src\Pyro\ImGui\ImGUISlider.cpp" />
+    <ClCompile Include="src\Pyro\ImGui\ImGUIComponent.cpp" />
+    <ClCompile Include="src\Pyro\IO\OBJ_Loader.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Skybox.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\CubeMap.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLCubeMap.cpp" />
+    <ClCompile Include="src\Pyro\Physics\CollisionRect.cpp" />
+    <ClCompile Include="src\Pyro\Physics\CollisionSphere.cpp" />
+    <ClCompile Include="src\Pyro\Physics\PhysicsEngine.cpp" />
   </ItemGroup>
 </Project>

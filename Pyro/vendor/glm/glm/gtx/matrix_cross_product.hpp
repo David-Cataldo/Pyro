@@ -1,4 +1,11 @@
-/// @ref gtx_matrix_cross_product
+/// @
+/// 
+/// 
+/// 
+/// 
+/// 
+/// 
+///  gtx_matrix_cross_product
 /// @file glm/gtx/matrix_cross_product.hpp
 ///
 /// @see core (dependence)

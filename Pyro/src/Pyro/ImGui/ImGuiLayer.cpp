@@ -1,7 +1,8 @@
 #include "pypch.h"
 #include "ImGuiLayer.h"
 
-#include "imgui.h"
+#include "backends/imgui_impl_opengl3.h"
+#include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.cpp"
 #include "backends/imgui_impl_glfw.cpp"
 
@@ -48,6 +49,7 @@ namespace Pyro
 		}
 
 		Application& app = Application::Get();
+
 		GLFWwindow* window = static_cast<GLFWwindow*>(app.GetWindow().GetNativeWindow());
 
 		// Setup Platform/Renderer bindings
@@ -64,8 +66,13 @@ namespace Pyro
 
 	void ImGuiLayer::OnImGuiRender()
 	{
-		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
+		
+
+		for (int i = 0; i < m_Components.size(); i++)
+		{
+			m_Components[i]->OnImGuiRender();
+		}
+
 	}
 
 	void ImGuiLayer::Begin()
@@ -92,6 +99,15 @@ namespace Pyro
 			ImGui::RenderPlatformWindowsDefault();
 			glfwMakeContextCurrent(backup_current_context);
 		}
+	}
+
+	void ImGuiLayer::OnEvent(Event& evnt)
+	{
+		ImGuiIO& io = ImGui::GetIO();
+		if(evnt.IsInCategory(EventCategoryMouse))
+			evnt.Handled = io.WantCaptureMouse;
+		else if(evnt.IsInCategory(EventCategoryKeyboard))
+			evnt.Handled = io.WantCaptureKeyboard;
 	}
 
 }

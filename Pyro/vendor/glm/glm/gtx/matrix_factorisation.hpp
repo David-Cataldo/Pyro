@@ -1,4 +1,9 @@
-/// @ref gtx_matrix_factorisation
+/// @
+/// 
+/// 
+/// 
+/// 
+///  gtx_matrix_factorisation
 /// @file glm/gtx/matrix_factorisation.hpp
 ///
 /// @see core (dependence)

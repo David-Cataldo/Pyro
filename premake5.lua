@@ -17,6 +17,9 @@ IncludeDir["GLFW"] = "Pyro/vendor/GLFW/include"
 IncludeDir["Glad"] = "Pyro/vendor/Glad/include"
 IncludeDir["ImGui"] = "Pyro/vendor/imgui"
 IncludeDir["glm"] = "Pyro/vendor/glm"
+IncludeDir["entt"] = "Pyro/vendor/entt/include"
+IncludeDir["OBJ_loader"] = "Pyro/vendor/OBJ_loader/include"
+IncludeDir["STBI"] = "Pyro/vendor/stbi/include"
 
 group "Dependencies"
 	include "Pyro/vendor/GLFW"
@@ -43,7 +46,9 @@ project "Pyro"
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl"
+		"%{prj.name}/vendor/glm/glm/**.inl",
+		"%{prj.name}/vendor/stbi/include/stb_image.h",
+		"%{prj.name}/vendor/OBJ_loader/include/OBJ_loader.h"
 	}
 
 	includedirs 
@@ -53,7 +58,10 @@ project "Pyro"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.OBJ_loader}",
+		"%{IncludeDir.STBI}"
 	}
 
 	links
@@ -108,7 +116,9 @@ project "Sandbox"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stbi/include/stb_image.h",
+		"%{prj.name}/vendor/OBJ_loader/include/OBJ_loader.h"
 	}
 
 	includedirs 
@@ -116,7 +126,10 @@ project "Sandbox"
 		"Pyro/vendor/spdlog/include",
 		"Pyro/src",
 		"Pyro/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.OBJ_loader}",
+		"%{IncludeDir.STBI}"
 	}
 
 	links

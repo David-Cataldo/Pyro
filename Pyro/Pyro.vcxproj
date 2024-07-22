@@ -75,13 +75,14 @@
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pypch.h</PrecompiledHeaderFile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;PY_PLATFORM_WINDOWS;PY_BUILD_DLL;GLFW_INCLUDE_NONE;PY_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\entt\include;vendor\OBJ_loader\include;vendor\stbi\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>4244;4312;4305;4996;4267;4715</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -95,9 +96,9 @@
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pypch.h</PrecompiledHeaderFile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;PY_PLATFORM_WINDOWS;PY_BUILD_DLL;GLFW_INCLUDE_NONE;PY_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\entt\include;vendor\OBJ_loader\include;vendor\stbi\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -105,6 +106,7 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>4244;4312;4305;4996;4267;4715</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -119,9 +121,9 @@
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pypch.h</PrecompiledHeaderFile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;PY_PLATFORM_WINDOWS;PY_BUILD_DLL;GLFW_INCLUDE_NONE;PY_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\entt\include;vendor\OBJ_loader\include;vendor\stbi\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -129,6 +131,7 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>4244;4312;4305;4996;4267;4715</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -140,16 +143,34 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLCubeMap.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Pyro.h" />
     <ClInclude Include="src\Pyro\Application.h" />
     <ClInclude Include="src\Pyro\Core.h" />
+    <ClInclude Include="src\Pyro\Core\GameObject.h" />
+    <ClInclude Include="src\Pyro\Core\Math.h" />
+    <ClInclude Include="src\Pyro\Core\Timestep.h" />
+    <ClInclude Include="src\Pyro\ECS_Components\RenderableComponent.h" />
+    <ClInclude Include="src\Pyro\ECS_Components\TransformComponent.h" />
     <ClInclude Include="src\Pyro\EntryPoint.h" />
     <ClInclude Include="src\Pyro\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Pyro\Events\Event.h" />
     <ClInclude Include="src\Pyro\Events\KeyEvent.h" />
     <ClInclude Include="src\Pyro\Events\MouseEvent.h" />
+    <ClInclude Include="src\Pyro\ImGui\ImGUIComponent.h" />
+    <ClInclude Include="src\Pyro\ImGui\ImGUISlider.h" />
+    <ClInclude Include="src\Pyro\IO\FileReader.h" />
+    <ClInclude Include="src\Pyro\IO\OBJ_Loader.h" />
+    <ClInclude Include="src\Pyro\IO\ShaderParser.h" />
+    <ClInclude Include="src\Pyro\IO\tiny_obj_loader.h" />
     <ClInclude Include="src\Pyro\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Pyro\Input.h" />
     <ClInclude Include="src\Pyro\KeyCodes.h" />
@@ -157,8 +178,33 @@
     <ClInclude Include="src\Pyro\LayerStack.h" />
     <ClInclude Include="src\Pyro\Log.h" />
     <ClInclude Include="src\Pyro\MouseButtonCodes.h" />
+    <ClInclude Include="src\Pyro\PerspectiveCameraController.h" />
+    <ClInclude Include="src\Pyro\Physics\CollisionBox.h" />
+    <ClInclude Include="src\Pyro\Physics\CollisionRect.h" />
+    <ClInclude Include="src\Pyro\Physics\CollisionSphere.h" />
+    <ClInclude Include="src\Pyro\Physics\PhysicsComponent.h" />
+    <ClInclude Include="src\Pyro\Physics\PhysicsEngine.h" />
+    <ClInclude Include="src\Pyro\Renderer\Buffer.h" />
+    <ClInclude Include="src\Pyro\Renderer\Camera.h" />
+    <ClInclude Include="src\Pyro\Renderer\CubeMap.h" />
+    <ClInclude Include="src\Pyro\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Pyro\Renderer\Light.h" />
+    <ClInclude Include="src\Pyro\Renderer\Material.h" />
+    <ClInclude Include="src\Pyro\Renderer\Mesh.h" />
+    <ClInclude Include="src\Pyro\Renderer\Model.h" />
+    <ClInclude Include="src\Pyro\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Pyro\Renderer\PerspectiveCamera.h" />
+    <ClInclude Include="src\Pyro\Renderer\PointLight.h" />
+    <ClInclude Include="src\Pyro\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Pyro\Renderer\Renderer.h" />
+    <ClInclude Include="src\Pyro\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Pyro\Renderer\Shader.h" />
+    <ClInclude Include="src\Pyro\Renderer\Skybox.h" />
+    <ClInclude Include="src\Pyro\Renderer\Texture.h" />
+    <ClInclude Include="src\Pyro\Renderer\VertexArray.h" />
     <ClInclude Include="src\Pyro\Window.h" />
     <ClInclude Include="src\pypch.h" />
+    <ClInclude Include="vendor\OBJ_loader\include\OBJ_loader.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_fixes.hpp" />
@@ -574,16 +620,50 @@
     <ClInclude Include="vendor\glm\glm\vec3.hpp" />
     <ClInclude Include="vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="vendor\stbi\include\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLCubeMap.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Pyro\Application.cpp" />
+    <ClCompile Include="src\Pyro\Core\GameObject.cpp" />
+    <ClCompile Include="src\Pyro\ImGui\ImGUIComponent.cpp" />
+    <ClCompile Include="src\Pyro\ImGui\ImGUISlider.cpp" />
+    <ClCompile Include="src\Pyro\IO\OBJ_Loader.cpp" />
+    <ClCompile Include="src\Pyro\IO\ShaderParser.cpp" />
     <ClCompile Include="src\Pyro\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Pyro\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Pyro\Layer.cpp" />
     <ClCompile Include="src\Pyro\LayerStack.cpp" />
     <ClCompile Include="src\Pyro\Log.cpp" />
+    <ClCompile Include="src\Pyro\PerspectiveCameraController.cpp" />
+    <ClCompile Include="src\Pyro\Physics\CollisionRect.cpp" />
+    <ClCompile Include="src\Pyro\Physics\CollisionSphere.cpp" />
+    <ClCompile Include="src\Pyro\Physics\PhysicsEngine.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Camera.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\CubeMap.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Light.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Material.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Mesh.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Model.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\PerspectiveCamera.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\PointLight.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Skybox.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Texture.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\pypch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

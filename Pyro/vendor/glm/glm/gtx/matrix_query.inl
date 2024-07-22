@@ -1,4 +1,19 @@
-/// @ref gtx_matrix_query
+/// @
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+gtx_matrix_query
 
 namespace glm
 {

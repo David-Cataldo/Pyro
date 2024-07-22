@@ -5,7 +5,7 @@
 #include "Pyro/Events/MouseEvent.h"
 #include "Pyro/Events/KeyEvent.h"
 
-#include <glad/glad.h>
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace Pyro
 {
@@ -49,13 +49,12 @@ namespace Pyro
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		PY_CORE_ASSERT(status, "Failed to initialize Glad!");
+		
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
-		SetVSync(true);
+		SetVSync(false);
 
 		// Set GLFW callbacks
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
@@ -138,10 +137,17 @@ namespace Pyro
 
 		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xPos, double yPos)
 			{
+				static double prevX = 0, prevY = 0;
+				float xChange = xPos - prevX;
+				float yChange = yPos - prevY;
+
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-				MouseMovedEvent evnt((float)xPos, (float)yPos);
+				MouseMovedEvent evnt(xChange, yChange);
 				data.EventCallback(evnt);
+
+				prevX = xPos;
+				prevY = yPos;
 			});
 	}
 
@@ -153,7 +159,7 @@ namespace Pyro
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)

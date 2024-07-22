@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Pyro/Core.h"
+#include "Pyro/Core/Timestep.h"
 #include "Pyro/Events/Event.h"
 
 namespace Pyro
@@ -14,7 +15,7 @@ namespace Pyro
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& evnt) {}
 

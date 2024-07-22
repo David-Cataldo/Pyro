@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\OBJ_loader">
+      <UniqueIdentifier>{53D03B20-BFE6-39B6-085E-C5D774B30A3E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\OBJ_loader\include">
+      <UniqueIdentifier>{C69AF105-325D-2590-7B0D-B41CE70EFE6D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\stbi">
+      <UniqueIdentifier>{544580C1-C0FA-F8B6-49EF-F28DB5A3EFBA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\stbi\include">
+      <UniqueIdentifier>{C78057FF-33E2-340D-BC4F-7BBF28B06BCC}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="vendor\OBJ_loader\include\OBJ_loader.h">
+      <Filter>vendor\OBJ_loader\include</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stbi\include\stb_image.h">
+      <Filter>vendor\stbi\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\SandboxApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
