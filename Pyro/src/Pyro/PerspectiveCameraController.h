@@ -39,7 +39,7 @@ namespace Pyro
 		PerspectiveCamera m_Camera;
 
 		float m_CameraRotationSpeed = 0.4f;
-		float m_CameraMoveSpeed = 4.0f;
+		float m_CameraMoveSpeed = 30.0f;
 
 	};
 }

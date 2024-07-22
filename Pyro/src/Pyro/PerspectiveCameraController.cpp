@@ -12,7 +12,11 @@ namespace Pyro
 	PerspectiveCameraController::PerspectiveCameraController(float fovy, float aspect, float zNear, float zFar)
 		: m_Camera(fovy, aspect, zNear, zFar), m_Fovy(fovy), m_AspectRatio(aspect), m_Near(zNear), m_Far(zFar)
 	{
-
+		if (m_ZoomLevel > (180.f / m_Fovy) - 0.1f)
+			m_ZoomLevel = (180.f / m_Fovy) - 0.1f;
+		if (m_ZoomLevel < 0.1f)
+			m_ZoomLevel = 0.1f;
+		m_Camera.SetProjection(m_Fovy * m_ZoomLevel, m_AspectRatio, m_Near, m_Far);
 	}
 
 	void PerspectiveCameraController::OnUpdate(Timestep ts)
@@ -43,7 +47,11 @@ namespace Pyro
 
 	bool PerspectiveCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
-		m_ZoomLevel -= e.GetYOffset();
+		m_ZoomLevel -= e.GetYOffset()/10;
+		if(m_ZoomLevel > (180.0f / m_Fovy)-0.1f || m_ZoomLevel < 0.1f)
+			m_ZoomLevel += e.GetYOffset() / 10;
+
+		std::cout << "ZOOMLEVEL: " << m_ZoomLevel << std::endl;
 		m_Camera.SetProjection(m_Fovy * m_ZoomLevel, m_AspectRatio, m_Near, m_Far);
 		return false;
 	}

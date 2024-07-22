@@ -47,7 +47,9 @@ namespace Pyro
 				Ref<Shader> shader = m->GetMat()->GetShader();
 				shader->Bind();
 				shader->UploadUniformMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
-				shader->UploadUniformMat4("u_Transform", *(m_RenderQueue.front()->GetTransform()));
+				auto trans = m_RenderQueue.front()->GetTransform();
+				trans->CheckPosChange();
+				shader->UploadUniformMat4("u_Transform", *(trans));
 				shader->UploadUniformFloat3("u_camPos", m_SceneData->CameraPosition);
 
 				shader->UploadUniformInt("u_numLights", m_SceneData->LightCount);

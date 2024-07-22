@@ -24,7 +24,7 @@ namespace Pyro
 		void Rotate(float xAngle, float yAngle);
 
 		glm::vec3 GetForwardVector() const { return m_ForwardVector; }
-
+		
 		virtual glm::vec3 GetPosition() const override { return m_Position; }
 		virtual const glm::mat4& GetProjectionMatrix() const override { return m_ProjectionMatrix; }
 		virtual const glm::mat4& GetViewMatrix() const override { return m_ViewMatrix; }

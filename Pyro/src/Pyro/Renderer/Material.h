@@ -13,11 +13,11 @@ namespace Pyro
 		{}
 
 		Material(Ref<Shader> shader, Ref<Texture> texture)
-			: m_Shader(shader), m_Albedo(texture)
+			: m_Shader(shader), m_Albedo(texture), m_Roughness(0.1), m_Metallic(0.1), m_AO(0.1)
 		{}
 
 		Material(Ref<Shader> shader, const std::string& texLoc = "Assets/Textures/plain.png")
-			: m_Shader(shader), m_Albedo(Texture::Create(texLoc))
+			: m_Shader(shader), m_Albedo(Texture::Create(texLoc)), m_Roughness(0.1), m_Metallic(0.1), m_AO(0.1)
 		{}
 
 		Ref<Shader> GetShader() { return m_Shader; }

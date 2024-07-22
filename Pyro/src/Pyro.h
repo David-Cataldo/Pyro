@@ -34,7 +34,8 @@
 
 #include "Pyro/Renderer/Light.h"
 #include "Pyro/Renderer/PointLight.h"
-// ----------------------------------
+// ---Physics------------------------
+#include "Pyro/Physics/PhysicsEngine.h"
 
 // ---Entry Point--------------------
 #include "Pyro/EntryPoint.h"

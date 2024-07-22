@@ -15,6 +15,7 @@
 
 #include "Pyro/Log.h"
 #include "Pyro/IO/FileReader.h"
+#include "Pyro/Core/Math.h"
 
 #ifdef PY_PLATFORM_WINDOWS
 	#include <Windows.h>

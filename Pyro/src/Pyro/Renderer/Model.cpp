@@ -26,7 +26,7 @@ namespace Pyro
 		std::vector<float> tex;
 
 		
-		for (Vertex v : verts)
+		for (const Vertex& v : verts)
 		{
 			position.push_back(v.position.x);
 			position.push_back(v.position.y);
@@ -51,37 +51,37 @@ namespace Pyro
 
 
 
-		Pyro::Ref<Pyro::VertexArray> m_SquareVA;
-		Pyro::Ref<Pyro::Material> m_Mat;
-		Pyro::Ref<Pyro::Mesh> m_Mesh;
+		Ref<VertexArray> m_SquareVA;
+		Ref<Material> m_Mat;
+		Ref<Mesh> m_Mesh;
 
-		m_SquareVA.reset(Pyro::VertexArray::Create());
-
-
+		m_SquareVA.reset(VertexArray::Create());
 
 
-		Pyro::Ref<Pyro::VertexBuffer> squareVB;
-		squareVB.reset(Pyro::VertexBuffer::Create(position, sizeof(float)*position.size()));
+
+
+		Ref<VertexBuffer> squareVB;
+		squareVB.reset(VertexBuffer::Create(position, sizeof(float)*position.size()));
 
 
 		squareVB->SetLayout({
-				{ Pyro::ShaderDataType::Float3, "a_Position"}
+				{ ShaderDataType::Float3, "a_Position"}
 			});
 
-		Pyro::Ref<Pyro::VertexBuffer> squareVB1;
-		squareVB1.reset(Pyro::VertexBuffer::Create(norms, sizeof(float)*norms.size()));
+		Ref<VertexBuffer> squareVB1;
+		squareVB1.reset(VertexBuffer::Create(norms, sizeof(float)*norms.size()));
 
 
 		squareVB1->SetLayout({
-				{ Pyro::ShaderDataType::Float3, "a_Normal"}
+				{ ShaderDataType::Float3, "a_Normal"}
 			});
 
-		Pyro::Ref<Pyro::VertexBuffer> squareVB2;
-		squareVB2.reset(Pyro::VertexBuffer::Create(tex, sizeof(float)*tex.size()));
+		Ref<VertexBuffer> squareVB2;
+		squareVB2.reset(VertexBuffer::Create(tex, sizeof(float)*tex.size()));
 
 
 		squareVB2->SetLayout({
-				{ Pyro::ShaderDataType::Float2, "a_TextureCoords"}
+				{ ShaderDataType::Float2, "a_TextureCoords"}
 			});
 
 
@@ -91,26 +91,27 @@ namespace Pyro
 		m_SquareVA->AddVertexBuffer(squareVB1);
 
 
-		Pyro::Ref<Pyro::IndexBuffer> squareIB;
-		squareIB.reset(Pyro::IndexBuffer::Create(indices, sizeof(uint32_t)*indices.size()));
+		Ref<IndexBuffer> squareIB;
+		squareIB.reset(IndexBuffer::Create(indices, sizeof(uint32_t)*indices.size()));
 
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 
-		Pyro::Ref<Pyro::Shader> m_Shader2;
-		m_Shader2.reset(Pyro::Shader::Create("Assets/Shaders/Test.vert.txt", "Assets/Shaders/PBR.frag.txt"));
-		m_Transform.reset(new Pyro::TransformComponent(glm::mat4(1.0f)));
+		Ref<Shader> m_Shader2;
+		m_Shader2.reset(Shader::Create("Assets/Shaders/Test.vert.txt", "Assets/Shaders/PBR.frag.txt"));
+		m_Transform.reset(new TransformComponent(glm::mat4(1.0f)));
+		std::cout << m_Transform->Position->x << ", " << m_Transform->Position->y << ", " << m_Transform->Position->z;
+		Ref<Texture> m_Tex;
+		m_Tex.reset(Texture::Create("Assets/Textures/green.png"));
 
-		Pyro::Ref<Pyro::Texture> m_Tex;
-		m_Tex.reset(Pyro::Texture::Create("Assets/Textures/green.png"));
+		m_Mat.reset(new Material(m_Shader2, m_Tex, 0.1, 0.1, 0.0));
 
-		m_Mat.reset(new Pyro::Material(m_Shader2, m_Tex, 0.1, 0.1, 0.0));
-
-		m_Mesh.reset(new Pyro::Mesh());
+		m_Mesh.reset(new Mesh());
 		m_Mesh->Create(m_SquareVA, m_Mat);
 		m_Mesh->GetMat()->GetTexture()->LoadTexture();
 		
 		m_Meshes.push_back(m_Mesh);
+		m_PhysicComponent.reset(new PhysicsComponent(m_Transform->Position));
 	}
 
 	Ref<Mesh> Model::operator[](int index)

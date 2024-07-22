@@ -1468,6 +1468,15 @@
     <ClInclude Include="src\Pyro\ImGui\ImGUISlider.h" />
     <ClInclude Include="src\Pyro\ImGui\ImGUIComponent.h" />
     <ClInclude Include="src\Pyro\IO\OBJ_Loader.h" />
+    <ClInclude Include="src\Pyro\Renderer\Skybox.h" />
+    <ClInclude Include="src\Pyro\Renderer\CubeMap.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLCubeMap.h" />
+    <ClInclude Include="src\Pyro\Physics\PhysicsComponent.h" />
+    <ClInclude Include="src\Pyro\Physics\CollisionBox.h" />
+    <ClInclude Include="src\Pyro\Physics\CollisionRect.h" />
+    <ClInclude Include="src\Pyro\Physics\CollisionSphere.h" />
+    <ClInclude Include="src\Pyro\Core\Math.h" />
+    <ClInclude Include="src\Pyro\Physics\PhysicsEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1568,5 +1577,11 @@
     <ClCompile Include="src\Pyro\ImGui\ImGUISlider.cpp" />
     <ClCompile Include="src\Pyro\ImGui\ImGUIComponent.cpp" />
     <ClCompile Include="src\Pyro\IO\OBJ_Loader.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\Skybox.cpp" />
+    <ClCompile Include="src\Pyro\Renderer\CubeMap.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLCubeMap.cpp" />
+    <ClCompile Include="src\Pyro\Physics\CollisionRect.cpp" />
+    <ClCompile Include="src\Pyro\Physics\CollisionSphere.cpp" />
+    <ClCompile Include="src\Pyro\Physics\PhysicsEngine.cpp" />
   </ItemGroup>
 </Project>
